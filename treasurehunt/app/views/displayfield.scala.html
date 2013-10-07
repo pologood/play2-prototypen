@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<style type="text/css" media="screen">  
+svg {
+     background-image: url(/assets/images/map.png);
+     background-repeat: no-repeat;
+}
+line {
+    stroke:rgb(0,0,0);
+    stroke-width:4;
+}
+circle {
+        fill: white;  
+        stroke: black;  
+        stroke-width: 1;  
+        -webkit-transition: all 350ms;  
+}  
+circle:hover {
+        fill: orange;
+        stroke-width: 1;  
+    } 
+
+a:focus {
+	outline: none;
+}
+#panel {
+	font: Arial, Helvetica, sans-serif;
+	background: lightgrey;
+	height: 200px;
+	display: none;
+}
+.slide {
+	margin: 0;
+	padding: 0;
+	border-top: solid 4px grey;
+}
+.btn-slide {
+	background: grey;
+	text-align: center;
+	width: 144px;
+	height: 31px;
+	padding: 10px 10px 0 0;
+	margin: 0 auto;
+	display: block;
+	font: bold 120%/100% Arial, Helvetica, sans-serif;
+	color: #fff;
+	text-decoration: none;
+    -moz-border-radius-bottomright: 15px;
+    -moz-border-radius-bottomleft: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.active {
+	background-position: right 12px;
+}
+</style>
+
+<script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	$("#loadbutton").click(function() {
+
+		 $("#jsonresponse").html("Sende Anfrage...");
+
+		 $.ajax( {
+			  type:'get',
+			  url:'http://localhost:9000/loadplayground?name='+$("#name").val(),
+			  dataType: 'json',
+			  success:function(data) {
+
+				 	 playground = eval(data);
+
+					 $("#jsonresponse").html("Spielfeldname: " + playground.name);
+					 
+					 drawPlaygroundSVG(playground);
+			  },
+			  error:function(data) {
+					 
+				  $("#jsonresponse").html("Kein Spielfeld gefunden");
+						  
+			  }
+		 
+			});
+		 
+     });
+
+	function drawPlaygroundSVG(playground) {
+		
+		var svgNS = "http://www.w3.org/2000/svg";
+		var svgGraph = document.getElementById("svgGraph"); // Das sollte auch mir jQuery gehen
+
+		while (svgGraph.lastChild) {
+			svgGraph.removeChild(svgGraph.lastChild);
+		}
+		// Pfade einzeichnen
+		for(var i in playground.paths){
+		  drawPath(svgGraph, playground.paths[i], i);
+		}
+
+		// Punkte zeichnen Teil 1
+		for(var i in playground.paths){
+		  drawPoint(playground.paths[i].fromPoint.x, playground.paths[i].fromPoint.y, playground.paths[i].fromPoint.id);
+		}
+
+		// Punkte zeichnen Teil 2
+		for(var i in playground.paths){
+		  drawPoint(playground.paths[i].toPoint.x, playground.paths[i].toPoint.y, playground.paths[i].fromPoint.id);
+		}
+
+	}
+
+	function drawPoint(x, y, id) {
+
+		circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+     	circle.setAttributeNS(null, 'id', "point"+id)
+		circle.setAttributeNS(null, "cx", x);
+        circle.setAttributeNS(null, "cy", y);
+
+        circle.setAttributeNS(null, "r", 15);
+
+        svgGraph.appendChild(circle);
+
+	}
+	
+	function drawPath(svgGraph, path, i){
+
+		var newLine = document.createElementNS('http://www.w3.org/2000/svg','line');
+	    newLine.setAttribute('id',"path"+path.id);
+	    newLine.setAttribute('x1',path.fromPoint.x);
+	    newLine.setAttribute('y1',path.fromPoint.y);
+	    newLine.setAttribute('x2',path.toPoint.x);
+	    newLine.setAttribute('y2',path.toPoint.y);
+        $("#svgGraph").append(newLine);
+	};
+
+	$(".btn-slide").click(function(){
+		$("#panel").slideToggle("slow");
+		$(this).toggleClass("active"); return false;
+	});
+
+});
+
+</script>
+<title>Projekt Schatzsuche : Spielfeld Tester</title>
+</head>
+
+<body>
+<div id="panel">
+
+	<h1>Spielfeld Tester</h1>
+		<p>
+			Ich bin nur eine Testform um zu checken, ob das System schon korrekte JSON Daten liefern und diese mittels JavaScript in eine SVG-Grafik einbauen kann. Dabei verwende ich auch schon Daten aus der Ebean-Datenbank.
+		</p>
+		<p>
+			<input id="name" type="text" value="foo">
+		</p>
+		<p>
+			<button id="loadbutton">Load</button>
+		</p>
+		</div>
+		<p class="slide"><a href="#" class="btn-slide">Auswahl</a></p>
+
+	<p id="jsonresponse">Kein Spielfeld geladen</p>
+	<svg id="svgGraph" width="1200" height="900" version="1.1" xmlns="http://www.w3.org/2000/svg">
+	</svg>
+</body>
+
+</html>

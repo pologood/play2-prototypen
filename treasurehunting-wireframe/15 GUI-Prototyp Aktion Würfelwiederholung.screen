@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" xmlns:o="http://wireframesketcher.com/1.0/model/overrides">
+  <widgets xsi:type="model:Master" id="1" measuredWidth="800" measuredHeight="600" dimmed="true">
+    <screen xsi:type="model:Screen" href="08%20GUI-Prototyp%20Template%20zur%20Spieldurchführung.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="2" x="532" y="269" measuredWidth="263" measuredHeight="316">
+    <screen xsi:type="model:WidgetGroup" href="assets/Bootstrap/Bootstrap.screen#Well"/>
+    <overrides>
+      <widgetChanges xsi:type="o:Delete" ref="163"/>
+      <widgets ref="162" width="263" height="316"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Master" id="3" x="542" y="540" measuredWidth="89" measuredHeight="30">
+    <screen xsi:type="model:WidgetGroup" href="assets/Bootstrap/Bootstrap.screen#Button%20Inverse"/>
+    <overrides>
+      <widgets ref="8" text="Los geht's!"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Master" id="4" x="542" y="279" measuredWidth="115" measuredHeight="33">
+    <screen xsi:type="model:WidgetGroup" href="assets/Bootstrap/Bootstrap.screen#Heading%204"/>
+    <overrides>
+      <widgets ref="132" text="Würfelglück"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Tooltip" id="5" x="572" y="248" text="Bezeichnung der gegenwärtigen Aktion" measuredWidth="218" measuredHeight="40">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="8" x="619" y="149" width="171" text="Single Player" measuredWidth="171" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Icon" id="12" y="91" width="533" height="509" measuredWidth="533" measuredHeight="509" icon="assets/15gui-prototypaktionwrfelwiederholung (large)"/>
+  <widgets xsi:type="model:TextArea" id="13" x="542" y="320" width="243" height="201" text="Du hast Würfelglück und darfst noch einmal&#xD;&#xA;würfeln." measuredWidth="243" measuredHeight="201">
+    <font/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

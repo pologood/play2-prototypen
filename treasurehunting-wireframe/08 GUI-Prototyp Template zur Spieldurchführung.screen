@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" xmlns:o="http://wireframesketcher.com/1.0/model/overrides">
+  <widgets xsi:type="model:Master" id="36" measuredWidth="800" measuredHeight="600" dimmed="true">
+    <screen xsi:type="model:Screen" href="03%20GUI-Prototyp%20Grundgerüst%20Webseite.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Panel" id="37" x="532" y="91" width="266" height="509" measuredWidth="266" measuredHeight="509" background="#000000"/>
+  <widgets xsi:type="model:Panel" id="38" y="91" width="533" height="509" measuredWidth="533" measuredHeight="509" background="#000000"/>
+  <widgets xsi:type="model:WidgetGroup" id="41" x="532" y="104" measuredWidth="263" measuredHeight="145">
+    <widgets xsi:type="model:Master" id="42" height="145" measuredWidth="263" measuredHeight="145">
+      <screen xsi:type="model:WidgetGroup" href="assets/Bootstrap/Bootstrap.screen#Well"/>
+      <overrides>
+        <widgetChanges xsi:type="o:Delete" ref="163"/>
+        <widgets ref="162" width="263" height="145"/>
+      </overrides>
+    </widgets>
+    <widgets xsi:type="model:Master" id="43" x="10" y="12" height="43" measuredWidth="177" measuredHeight="43">
+      <screen xsi:type="model:WidgetGroup" href="assets/Bootstrap/Bootstrap.screen#Heading%204"/>
+      <overrides>
+        <widgets ref="132" width="177" text="Spielstand"/>
+      </overrides>
+    </widgets>
+    <widgets xsi:type="model:Label" id="44" x="10" y="69" text="Spielname:" measuredWidth="66" measuredHeight="23">
+      <font bold="true"/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="45" x="80" y="69" width="171" text="Spiel 4" measuredWidth="171" measuredHeight="23">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="46" x="10" y="100" text="Stefan" measuredWidth="71" measuredHeight="32" textAlignment="Center" icon="user (large)">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="47" x="108" y="100" text="2" measuredWidth="44" measuredHeight="32" textAlignment="Center" icon="calculator (large)">
+      <font/>
+    </widgets>
+    <widgets xsi:type="model:Label" id="48" x="10" y="44" text="Spielmodus:" measuredWidth="72" measuredHeight="23">
+      <font bold="true"/>
+    </widgets>
+    <widgets xsi:type="model:Tooltip" id="50" x="124" y="55" height="52" text="gesammelte Karten" measuredWidth="112" measuredHeight="52">
+      <font/>
+    </widgets>
+  </widgets>
+  <widgets xsi:type="model:Panel" id="69" x="532" y="269" width="263" height="316" measuredWidth="263" measuredHeight="316" background="#000000" foreground="#ffffff"/>
+  <widgets xsi:type="model:Tooltip" id="54" x="619" y="368" text="Spielzugaktion" measuredWidth="87" measuredHeight="40">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Icon" id="66" x="487" y="104" measuredWidth="32" measuredHeight="32" foreground="#ffffff" icon="error (large)"/>
+  <widgets xsi:type="model:Icon" id="67" x="446" y="104" measuredWidth="32" measuredHeight="32" foreground="#ffffff" icon="reload (large)"/>
+  <widgets xsi:type="model:Icon" id="68" x="408" y="104" measuredWidth="32" measuredHeight="32" foreground="#ffffff" icon="pause (large)"/>
+  <widgets xsi:type="model:Master" id="72" x="10" y="97" measuredWidth="69" measuredHeight="237" dimmed="true">
+    <screen xsi:type="model:Screen" href="16%20GUI-Prototyp%20Zooming%20Funktion.screen#/"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

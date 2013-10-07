@@ -1,0 +1,31 @@
+# common
+common.index.title=Schatzsuche - Startseite
+common.index.heading=Herzlich willkommen!
+common.index.login.username.label=Nutzername:
+common.index.login.username.placeholder=Ihr Name
+common.index.login.username.error=Falscheingabe: Bitte überprüfen Sie Ihre Eingabe!
+common.index.login.submit=Weiter
+
+# i18n
+common.lang.label=Sprache:
+common.lang.a.cz.tooltip=Tschechisch
+common.lang.a.pl.tooltip=Polnisch
+common.lang.a.de.tooltip=Deutsch
+common.lang.a.en.tooltip=Englisch
+
+# main template: nav
+common.main.nav.brand=Schatzsuche
+common.main.nav.a.game=Spiel
+common.main.nav.a.admin=Administration
+common.main.nav.uname=Angemeldet als {0}
+
+# main template: footer
+common.main.copyright=Saxonia Systems 2013
+
+# actions
+common.actions.StartGame.heading=Spielstart
+common.actions.StartGame.info=Betätige die Schaltfläche, um das Spiel zu starten.
+common.actions.StartGame.button=Starten
+common.actions.FinishGame.heading=Spielstart
+common.actions.FinishGame.info="Du hast den Zielpunkt erreicht und x Karten gesammelt. Prima!\n\nBetätige die untere Schaltfläche, um das Spiel zu starten."
+common.actions.FinishGame.button=Spiel beenden

@@ -1,0 +1,32 @@
+game.index.title=Schatzsuche - Spiel
+game.index.welcome.heading=Willkommen zur Schatzsuche
+game.index.welcome.text=in der Euroregion Neisse! 
+game.index.welcome.paragraph1=Einmal ein Schatzsucher sein, wer hat noch nicht davon geträumt? Auf Entdeckungsreise zu gehen, Menschen und Länder kennen zu lernen und mit Freunden geheimnisvolle Abenteuer zu bestehen - das macht nicht nur Kindern Spaß. Und so laden wir alle kleinen und großen Schatzsucher mit unserem Spiel Schatzsuche zu einer ganz besonderen Entdeckungsreise in die Euroregion Neisse ein.
+game.index.welcome.paragraph2= In dieser Region grenzen nicht nur die drei Länder Deutschland, Polen und Tschechien aneinander, die einen riesigen ErIebnis-Schatz an interessanten Sehenswürdigkeiten, Museen und Freizeiteinrichtungen hüten, die auf Euren Besuch warten! Hier werden auch viele spannende Sagen, Geschichten und überlieferte Bräuche bewahrt, über die lhr in unserer Schatztruhe (dem Begleitheft zum Spiel) nachlesen könnt. Die Region hat aber auch einen ganz besonderen Wort-Schatz, den es zu erkunden gilt. Auf engstem Raum werden gleich vier verschiedene Sprachen gesprochen: Deutsch, Polnisch, Tschechisch und Sorbisch. Mit den beiliegenden Spielkarten könnt Ihr im Spiel die Sprache unserer Nachbarn kennen lernen und üben. So könnt lhr Euch auf Eurer Reise durch die Euroregion Neisse immer mit Euren Freunden und Nachbarn verständigen. 
+game.index.welcome.greetings=Viel Spaß und Erfolg auf der Schatzsuche!
+
+# singleplayer conf
+game.index.sp.conf.heading=Single Player
+game.index.sp.conf.gameName.label=Name:
+game.index.sp.conf.gameName.label.placeholder=Spielname
+game.index.sp.conf.gameName.error=Der Name des Spiels kann nicht ausschließlich aus Leerzeichen bestehen.
+game.index.sp.conf.counterColor.label=Farbe der Spielfigur:
+game.index.sp.conf.counterColor.red=Rot
+game.index.sp.conf.counterColor.green=Grün
+game.index.sp.conf.counterColor.blue=Blau
+game.index.sp.conf.playgroundName.label=Spielfeld:
+game.index.sp.conf.submit=Los geht''s!
+
+# game template
+game.template.info.heading=Spielstand
+game.template.info.modename.label=Spielmodus:
+game.template.info.gamename.label=Spielname:
+
+# scores
+game.template.info.scores.heading.color=Spielfigur
+game.template.info.scores.heading.username=Spielername
+game.template.info.scores.heading.cards=Karten
+
+# singleplayer
+game.singleplayer.title=Schatzsuche - Single Player Game
+game.singleplayer.modename=Single Player

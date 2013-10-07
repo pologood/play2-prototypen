@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Browser" id="1" x="128" y="136" width="621" height="430" text="Schatzsuche Testseite&#xA;http://treasurehunting.de" measuredWidth="621" measuredHeight="430"/>
+  <widgets xsi:type="model:Label" id="2" x="138" y="198" text="Hallo Justus, Andre, Joseph, Roman, Sebastian und Stefan!" measuredWidth="311" measuredHeight="23">
+    <font/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

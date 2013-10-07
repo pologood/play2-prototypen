@@ -1,0 +1,54 @@
+@* callMyCheckbox Template File *@
+@(param: Any)
+
+@import helper._
+
+@implicitField = @{ FieldConstructor(views.html.admin.myCheckbox.f) }
+
+
+@helper.form(action=controllers.admin.routes.Players.submit()) {
+	
+			<table class="table table-striped">
+				<tr class="info">
+					<th>Anwender</th>
+					<th>Rollen</th>
+					<th>Rechte</th>
+				</tr>
+				
+				<tr>
+					@for(user<-allUser) {
+						<td>@user.name</td>
+						@for((role,i) <- user.roles.zipWithIndex) { 
+						    @if(i>0){<tr><td></td>}
+						    <td>
+						    @checkbox(userForm("roles")("["+i+"]"),
+						    	'value->{
+						    		if(role.roleName==security.common.Roles.ROLE_ADMIN){security.common.Roles.ROLE_ADMIN} else {
+						    		if(role.roleName==security.common.Roles.ROLE_PLAYER){security.common.Roles.ROLE_PLAYER}}}, 
+						    	'_text->{
+						    		if(role.roleName==security.common.Roles.ROLE_ADMIN){"Spielführer"} else {
+						    		if(role.roleName==security.common.Roles.ROLE_PLAYER){"Spieler"}}})
+						    </td>
+						    @for((perm, j)<-role.permissions.zipWithIndex) {
+								@if(j>0) {</tr><tr><td></td><td></td>}
+								<td>@checkbox((userForm("roles")("["+i+"]"))("permissions")("["+j+"]"),
+									'value->{
+										(userForm("roles")("["+i+"]"))("permissions")("["+j+"]").value
+										
+									},
+									'_text->{
+										models.common.UserPermission.findByGottenValue(
+											(userForm("roles")("["+i+"]"))("permissions")("["+j+"]").value.get
+										)
+									}
+								)</td>							
+							}
+							</tr>
+						}
+					}
+				</tr>
+				
+			</table>
+			<input type="submit" class="btn" value="Speichern">
+}
+		

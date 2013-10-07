@@ -1,0 +1,43 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+#admin
+GET			/admin									controllers.admin.Application.index
+
+# playground (Preview)
+GET			/admin/playgrounds							controllers.admin.Playgrounds.playgrounds()
+GET			/showPreviewJson							controllers.admin.Playgrounds.showPreviewJson()
+#GET		/admin/playgrounds/:name					controllers.admin.Playgrounds.playgrounds(name: String)			
+GET			/admin/playgrounds/load/:name				controllers.admin.Playgrounds.load(name: String)
+
+# pathNpoints (Play Forms)
+GET			/admin/playgrounds/pathNpoints						controllers.admin.Playgrounds.pathNpoints				
+GET			/admin/playgrounds/pathNpoints/createPath			controllers.admin.Playgrounds.createPathNpoint		
+GET			/admin/playgrounds/pathNpoints/savePath				controllers.admin.Playgrounds.savePathNpoint
+GET			/admin/playgrounds/pathNpoints/deletePath/:id		controllers.admin.Playgrounds.deletePathNpoint(id: Long)
+
+# points (AJAX)
+GET			/admin/playgrounds/points						controllers.admin.Playgrounds.points			 
+GET			/admin/playgrounds/points/createPoint/:x/:y		controllers.admin.Playgrounds.createPoint(x: Integer, y:Integer)			
+GET			/admin/playgrounds/points/savePoint/:id/:x/:y	controllers.admin.Playgrounds.savePoint(id:Long, x: Integer, y:Integer)
+GET			/admin/playgrounds/deletePoint/:id				controllers.admin.Playgrounds.deletePoint(id: Long)			
+
+# paths (AJAX)
+GET			/admin/playgrounds/paths							controllers.admin.Playgrounds.paths				
+GET			/admin/playgrounds/paths/createPath/:from/:to		controllers.admin.Playgrounds.createPath(from:Long, to:Long)		
+GET			/admin/playgrounds/paths/savePath/:id/:fromId/:toId	controllers.admin.Playgrounds.savePath(id:Long, fromId:Long, toId:Long)
+GET			/admin/playgrounds/paths/deletePath/:id				controllers.admin.Playgrounds.deletePath(id: Long)
+
+# WebSocket
+GET     	/admin/playgrounds/administratePlayground       controllers.admin.Playgrounds.administratePlayground
+GET     	/admin/playgrounds/pointsWS       				controllers.admin.Playgrounds.pointsWS
+
+# Comet
+GET     	/admin/playgrounds/comet       				controllers.admin.Playgrounds.comet
+
+# players
+GET			/admin/players								controllers.admin.Players.players()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     	/assets/*file               			controllers.admin.Assets.at(path="/public", file)

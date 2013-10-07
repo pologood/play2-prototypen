@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Master" id="82" measuredWidth="800" measuredHeight="600" dimmed="true">
+    <screen xsi:type="model:Screen" href="08%20GUI-Prototyp%20Template%20zur%20Spieldurchführung.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Icon" id="81" x="20" y="111" width="504" height="490" measuredWidth="504" measuredHeight="490" icon="assets/spielfeldanzeige (large)"/>
+  <widgets xsi:type="model:Label" id="83" x="619" y="149" width="171" text="Besucherarena" measuredWidth="171" measuredHeight="23">
+    <font/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

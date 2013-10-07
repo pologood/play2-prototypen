@@ -1,0 +1,74 @@
+@* the main template file *@
+@(title: String = "", nav: String)(header: Html)(content: Html)
+
+@import play.api.i18n._
+
+@import de.saxsys.treasurehunting.common.views.html._
+@import de.saxsys.treasurehunting.common.controllers._
+
+@defining(CommonController.getLang()) { lang =>
+
+<html>
+    <head>
+        <title>@title</title>
+        
+        <!-- meta information -->
+        <meta charset="utf-8">
+	    <meta name="description" content="Treasurehunting - An Online Game for Learning Languages">
+	    <meta name="author" content="Saxonia Systems Treasurehunting Team">
+        
+        @bootstrap.header()
+	   	@i18n.header()
+	   	
+	   	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/common-main.css")" >
+	   	
+	   	@header
+	   	       
+    </head>
+    
+    <body>
+    
+    	<!-- navigation bar -->
+    
+	    <div id="div-main-nav" class="navbar navbar-inverse navbar-static-top">
+	      <div class="navbar-inner">      	
+	        <div class="container-fluid">
+	          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          <img id="img-logo" src="@routes.Assets.at("images/logo/signLogo.svg")"/>
+	    
+	          <div class="nav-collapse collapse" >
+	            <ul class="nav  pull-bottom">
+	              <li id="li-nav-game" class="@("active".when(nav == "game"))">
+	                <a id="a-nav-game" href="http://@play.mvc.Controller.request().host()/game")">@Messages("common.main.nav.a.game")(lang)</a>
+	              </li>
+	              <li id="li-nav-admin" class="@("active".when(nav == "admin"))">
+	                <a id="a-nav-admin" href="http://@play.mvc.Controller.request().host()/admin")">@Messages("common.main.nav.a.admin")(lang)</a>
+	              </li>
+	            </ul>
+	            <p id="lbl-logged-uname" class="navbar-text pull-right">@Messages("common.main.nav.uname", CommonController.getLocalUser().name)(lang)</p>
+	            @i18n.content(lang)("pull-right","navbar-text")
+	            <!--/.nav-collapse -->
+	          </div>	          
+	        </div>
+	      </div>
+	    </div>
+	    
+	    <!-- main container -->
+	    
+	    <div id="div-main-container" class="container-fluid" >
+	      @content
+	      <hr>
+	      <footer>
+	        <p>&copy; @Messages("common.main.copyright")(lang)</p>
+	      </footer>
+	    </div>
+	    <!--/.fluid-container-->
+	</body>
+	
+</html>
+
+}

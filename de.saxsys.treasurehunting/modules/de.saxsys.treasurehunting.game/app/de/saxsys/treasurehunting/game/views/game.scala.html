@@ -1,0 +1,112 @@
+@(title: String = "", gamename: String, modename: String)(modeheader: Html)(modeplayground: Html)(modeaction: Html)
+
+@import play.api.i18n._
+@import de.saxsys.treasurehunting.common.views.html._
+@import de.saxsys.treasurehunting.common.controllers._
+
+@defining(CommonController.getLang()) { lang =>
+	
+	@main(title, "game") { 
+		@* header *@
+		<link rel="stylesheet" type="text/css" 
+			href="@routes.Assets.at("stylesheets/game/game.css")" >
+		<script type="text/javascript" 
+			src="@routes.Assets.at("javascripts/game/game.js")"></script>
+		@modeheader
+	} {
+		@* content *@
+		
+		<!-- für alles: Roman: Restliche Styles gemäß Vorgaben definieren. -->
+		
+		<div class="row-fluid">
+			
+			<div id="div-playground" class="span8">
+			
+				<div id="div-nav-playground">
+					<!-- TODO -->
+				</div>
+			
+				<div id="div-game-controls">
+				
+					<!-- Roman: Javascript-Code zum Ersetzen bei Pause und vice versa -->
+					
+					<div id="div-resume">
+						<a id="a-resume" onclick="resumeGame()">
+							<img src="@routes.Assets.at("images/game/buttons/Resume_Button_64x64.svg")" alt="resume">
+						</a>
+					</div>
+					
+					<div id="div-pause">
+						<a id="a-pause" onclick="pauseGame()">
+							<img src="@routes.Assets.at("images/game/buttons/Pause_Button_64x64.svg")" alt="pause">
+						</a>
+					</div>
+					
+					<!-- ###################### -->
+				
+					<div id="div-restart">
+						<a id="a-restart" onclick="restartGame()">
+							<img src="@routes.Assets.at("images/game/buttons/Refresh_Button_64x64.svg")" alt="restart">
+						</a>
+					</div>
+				
+					<div id="div-cancel">
+						<a id="a-cancel" onclick="cancelGame()">
+						<img src="@routes.Assets.at("images/game/buttons/Cancel_Button_64x64.svg")" alt="cancel">
+						</a>
+					</div>
+				
+				</div>
+				
+				@modeplayground
+			
+			</div>
+			
+			<div id="div-ia" class="span4">
+				<div id="div-info" class="well">
+					
+					<h4>@Messages("game.template.info.heading")(lang)</h4>
+					
+					<div class="control-group"> 
+					    <div>
+					    	<span class="control-label"><b>@Messages("game.template.info.modename.label")(lang)</b></span> 
+					    </div>
+					    <div>
+					    	<span id="lbl-gamemode">@modename</span>
+					    </div>
+					</div>
+					
+					<div class="control-group"> 
+					    <div>
+					    	<span class="control-label"><b>@Messages("game.template.info.gamename.label")(lang)</b></span> 
+					    </div>
+					    <div>
+					    	<span id="lbl-gamename">@gamename</span>
+					    </div>
+					</div>
+					
+					<!-- 
+						Roman: each line must be created dynamically via 
+						javascript (using the websocket messages given by the server) 
+					-->
+					<table id="table-info" class="table table-striped">						
+						<tr>
+							<th>@Messages("game.template.info.scores.heading.color")(lang)</th>
+							<th>@Messages("game.template.info.scores.heading.username")(lang)</th>
+							<th>@Messages("game.template.info.scores.heading.cards")(lang)</th>
+						</tr>
+					</table>
+					
+				</div>
+				
+				<div id="div-action">
+					@modeaction
+				</div>
+				
+			</div>
+		</div>
+		
+		
+		
+	}
+}

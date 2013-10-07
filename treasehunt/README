@@ -1,0 +1,56 @@
+Treasehunt Demo Anwendung
+=========================
+
+Angewandte Play-Features:
+-------------------------
+
+* Play Forms
+ * FieldSelectors
+* Ajax
+* Websockets
+* Twitter-Bootstrap
+* Comet (TODO)
+* Modularisierung von Play-Anwendungen
+* Authentifizierung und Authorisierung mit Deadbolt2 und Play-Authenticate
+* Fluent View und Performanz Tests
+* Akka
+* JQuery (inkl. Json-Plugin) 
+* Internationalisierung und Lokalisierung
+* Ebean
+
+Testen der Anwendung:
+---------------------
+
+Zum Testen der Anwendung stehen zwei Testfälle bereit, welche auf Basis von 
+FluentLenium (bzw. Selenium) entwickelt wurden:
+
+1. views.common.FluentRegistrationTest 
+Dieser Test automatisiert den An- und Abmeldeprozess zur Durchführung der Registrierung, des Logins sowie des Logouts.
+Dabei werden die Tests nacheinander für die Browser Firefox (v17-), Chrome (aktuell) und Internet Explorer durchgeführt.
+
+2. views.admin.FluentAsyncTest
+Dieser Testfall führt einen Performanztest zum Vergleich der Varianten zur Administration der Spielfelddaten durch:
+
+* Variante unter ausschließlichem Einsatz von Play Forms
+* Ajax-Variante
+* Websocket-Variante
+* Comet (TODO)
+
+Start der Testfälle (Run Mode):
+
+* Starten der Play-Anwendung im Run-Mode: play
+* Ausführen der Testfälle über die Kommandozeile: 
+ * Alles Testen: test 
+ * Spezifische Testklasse testen: test-only views.admin.FluentAsyncTest
+
+Start der Testfälle (Debuggen mit der Scala-IDE):
+
+* Starten der Play-Anwendung im Debug-Mode: play debug
+* Starten der JPDA-Launchers (Remote-Eclipse-Application-Launcher) in der Scala IDE
+* Ausführen der Testfälle über die Kommandozeile mit test / test-only
+
+
+Aus der IDE lassen sich die Testfälle nicht starten, da Includes in der Play-Konfigurationsdatei in diesem Fall nicht berücksichtigt werden 
+und die folgende Exception auftritt. Vom dynamischen Hinzufügen des entsprechenden Parameters wurde aufgrund der Abweichung von der Konsolenversion.
+
+java.lang.RuntimeException: smtp.host needs to be set in application.conf in order to use this plugin (or set smtp.mock to true) 

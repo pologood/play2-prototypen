@@ -1,0 +1,15 @@
+@()
+
+@import play.api.i18n._
+@import de.saxsys.treasurehunting.admin.views.html._
+@import de.saxsys.treasurehunting.common.views.html._
+@import de.saxsys.treasurehunting.common.controllers._
+
+@defining(CommonController.getLang()) { lang =>
+	
+	@main(Messages("admin.index.title")(lang), "admin") { 
+		@* header *@
+	} {
+		@* content *@
+	}
+}

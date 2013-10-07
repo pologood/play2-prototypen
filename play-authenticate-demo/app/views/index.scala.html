@@ -1,0 +1,25 @@
+@(message: String)
+
+@import com.feth.play.module.pa.views.html._
+
+
+@main("Welcome to Play 2.1") {
+    
+    @currentAuth() { auth =>
+	    @* show logout depending on the authentification state *@
+	    @if(auth != null) {
+	        <a href="@com.feth.play.module.pa.controllers.routes.Authenticate.logout">Logout</a>
+	    }
+	}
+	
+	@currentAuth() { auth =>
+	    Logged in with provider '@auth.getProvider()' and the user ID '@auth.getId()'<br/>
+	    Your session expires
+	    @if(auth.expires() == -1){
+	        never
+	    } else {
+	        at @auth.expires() (UNIX timestamp)
+	    }
+	}
+	
+}

@@ -1,0 +1,30 @@
+@(gamename: String)
+
+@import play.api.i18n._
+@import de.saxsys.treasurehunting.game.views.html._
+@import de.saxsys.treasurehunting.game.controllers._
+
+@defining(de.saxsys.treasurehunting.common.controllers.CommonController.getLang()) { lang =>
+	
+	@game(Messages("game.singleplayer.title")(lang), gamename, Messages("game.singleplayer.modename")(lang)) { 
+		@* modeheader *@
+		<link rel="stylesheet" type="text/css" 
+			href="@routes.Assets.at("stylesheets/game/singleplayer/singleplayer.css")" >
+		<script type="text/javascript" 
+			src="@routes.Assets.at("javascripts/game/singleplayer/singleplayer.js")"></script>
+		<script>
+			$(function() {   
+				console.log("Document loaded ...");
+				initializeSinglePlayerGame("@routes.GameController.initializeSinglePlayerGame(
+					java.lang.Long.parseLong(play.mvc.Controller.request().getQueryString("game"))).webSocketURL(request)");
+			});
+		</script>
+	} {
+		@* modeplayground *@
+		...
+	} {
+		@* modeaction *@
+		...
+		@play.mvc.Controller.request().getQueryString("game")
+	}
+}

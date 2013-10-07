@@ -1,0 +1,85 @@
+# -------------------
+# |   actions       |
+# -------------------
+actions:
+
+- &StartGame !!de.saxsys.treasurehunting.common.models.actions.Action {heading: "common.actions.StartGame.heading", info: "common.actions.StartGame.info", button: "common.actions.StartGame.button", type: 1}
+- &FinishGame !!de.saxsys.treasurehunting.common.models.actions.Action { heading: "common.actions.FinishGame.heading", info: "common.actions.FinishGame.info", button: "common.actions.FinishGame.button", type: 2}
+
+
+# -------------------
+# |   points        |
+# -------------------
+points:
+
+# points for playground 'big'
+- &a !!de.saxsys.treasurehunting.common.models.playgrounds.Point { x: 100, y: 100, actions: [*StartGame]}
+- &b !!de.saxsys.treasurehunting.common.models.playgrounds.Point { x: 130, y: 150, actions: []}
+- &c !!de.saxsys.treasurehunting.common.models.playgrounds.Point { x: 150, y: 300, actions: []}
+- &d !!de.saxsys.treasurehunting.common.models.playgrounds.Point { x: 170, y: 350, actions: []}
+- &e !!de.saxsys.treasurehunting.common.models.playgrounds.Point { x: 200, y: 200, actions: []}
+- &f !!de.saxsys.treasurehunting.common.models.playgrounds.Point { x: 220, y: 220, actions: []}
+- &g !!de.saxsys.treasurehunting.common.models.playgrounds.Point { x: 270, y: 300, actions: [*FinishGame]}
+
+# points for playground 'small'
+- &a2 !!de.saxsys.treasurehunting.common.models.playgrounds.Point { x: 100, y: 100, actions: [*StartGame]}
+- &b2 !!de.saxsys.treasurehunting.common.models.playgrounds.Point { x: 150, y: 150, actions: []}
+- &c2 !!de.saxsys.treasurehunting.common.models.playgrounds.Point { x: 150, y: 270, actions: []}
+- &d2 !!de.saxsys.treasurehunting.common.models.playgrounds.Point { x: 200, y: 300, actions: []}
+- &e2 !!de.saxsys.treasurehunting.common.models.playgrounds.Point { x: 200, y: 200, actions: [*FinishGame]}
+
+# -------------------
+# |   paths         |
+# -------------------
+paths:
+
+# paths for playground 'big'
+- &1 !!de.saxsys.treasurehunting.common.models.playgrounds.Path {fromPoint: *a, toPoint: *b}
+- &2 !!de.saxsys.treasurehunting.common.models.playgrounds.Path {fromPoint: *b, toPoint: *c}
+- &3 !!de.saxsys.treasurehunting.common.models.playgrounds.Path {fromPoint: *c, toPoint: *d}
+- &4 !!de.saxsys.treasurehunting.common.models.playgrounds.Path {fromPoint: *d, toPoint: *g}
+- &5 !!de.saxsys.treasurehunting.common.models.playgrounds.Path {fromPoint: *d, toPoint: *e}
+- &6 !!de.saxsys.treasurehunting.common.models.playgrounds.Path {fromPoint: *e, toPoint: *f}
+- &7 !!de.saxsys.treasurehunting.common.models.playgrounds.Path {fromPoint: *f, toPoint: *g}
+
+# paths for playground 'small'
+- &10 !!de.saxsys.treasurehunting.common.models.playgrounds.Path {fromPoint: *a2, toPoint: *b2}
+- &11 !!de.saxsys.treasurehunting.common.models.playgrounds.Path {fromPoint: *b2, toPoint: *c2}
+- &12 !!de.saxsys.treasurehunting.common.models.playgrounds.Path {fromPoint: *c2, toPoint: *d2}
+- &13 !!de.saxsys.treasurehunting.common.models.playgrounds.Path {fromPoint: *d2, toPoint: *e2}
+
+# -------------------
+# |   playgrounds   |
+# -------------------
+playgrounds:
+
+# big
+- &pgBig !!de.saxsys.treasurehunting.common.models.playgrounds.Playground {name: Big Playground, background: "/assets/images/playgrounds/backgroundBig.svg", width: 350, height: 340, paths: [*1,*2,*3,*4,*5,*6,*7], startPoint: *a, endPoint: *g}
+
+# small
+- &pgSmall !!de.saxsys.treasurehunting.common.models.playgrounds.Playground {name: Small Playground, background: "/assets/images/playgrounds/backgroundSmall.svg", width: 250, height: 330, paths: [*10,*11,*12,*13], startPoint: *a2, endPoint: *e2}
+
+# ----------------------------
+# |   already active users   |
+# ----------------------------
+
+users:
+- &userStefan !!de.saxsys.treasurehunting.common.models.user.User {name: stefan}
+
+# -------------------------------
+# |   already active counters   |
+# -------------------------------
+counters:
+- &counterRed !!de.saxsys.treasurehunting.common.models.game.Counter {color: 0xff0000, cards: 0, position: *a, user: *userStefan}
+- &counterGreen !!de.saxsys.treasurehunting.common.models.game.Counter {color: 0x00ff00, cards: 2, position: *e2, user: *userStefan}
+
+# ----------------------------
+# |   already active games   |
+# ----------------------------
+games:
+
+# singleplayer game where the red counter of user stefan is on the startPoint and just dicing
+- &game1 !!de.saxsys.treasurehunting.common.models.game.Game {name: "Spiel 1", superState: 3, subState: 31, hMode: 1, activeCounter: 0, counters: [*counterRed], playground: *pgBig}
+
+# singleplayer game where the green counter of user stefan is on the endPoint and just performing the FinishGame action
+- &game2 !!de.saxsys.treasurehunting.common.models.game.Game {name: "Spiel 2", superState: 3, subState: 33, hMode: 1, activeCounter: 0, counters: [*counterGreen], playground: *pgSmall}

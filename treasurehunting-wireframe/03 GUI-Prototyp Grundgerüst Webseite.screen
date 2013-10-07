@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" xmlns:o="http://wireframesketcher.com/1.0/model/overrides">
+  <widgets xsi:type="model:Browser" id="1" x="16" y="176" width="800" height="600" text="Schatzsuche - Spiel&#xA;http://treasurehunting.de/game" measuredWidth="800" measuredHeight="600"/>
+  <widgets xsi:type="model:Master" id="2" x="16" y="228" height="40" measuredWidth="800" measuredHeight="40">
+    <screen xsi:type="model:WidgetGroup" href="assets/Bootstrap/Bootstrap.screen#Navbar"/>
+    <overrides>
+      <widgetChanges xsi:type="o:Insert" newIndex="9">
+        <object xsi:type="model:Label" x="664" y="10" text="Eingeloggt als Stefan" foreground="#ffffff">
+          <font/>
+        </object>
+      </widgetChanges>
+      <widgetChanges xsi:type="o:Insert" newIndex="9">
+        <object xsi:type="model:Icon" x="16" y="4" height="31" foreground="#ffffff" icon="database (large)"/>
+      </widgetChanges>
+      <widgetChanges xsi:type="o:Delete" ref="190"/>
+      <widgetChanges xsi:type="o:Delete" ref="189"/>
+      <widgetChanges xsi:type="o:Delete" ref="188"/>
+      <widgetChanges xsi:type="o:Delete" ref="187"/>
+      <widgetChanges xsi:type="o:Delete" ref="184"/>
+      <widgets ref="181" width="800" height="40">
+        <attributes key="background" value="#000000"/>
+        <attributes key="foreground" value="#000000"/>
+      </widgets>
+      <widgets ref="183" x="56" y="3" width="124" text="Schatzsuche">
+        <attributes key="foreground" value="#ffffff"/>
+        <font bold="true"/>
+      </widgets>
+      <widgets ref="185" x="192" y="6" width="44" text="Spiel">
+        <attributes key="foreground" value="#ffffff"/>
+      </widgets>
+      <widgets ref="186" x="244" y="6" width="109" text="Administration">
+        <attributes key="foreground" value="#999999"/>
+      </widgets>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Master" id="16" x="432" y="234" measuredWidth="236" measuredHeight="28">
+    <screen xsi:type="model:Screen" href="04%20GUI-Prototyp%20Internationaliserung.screen#/"/>
+    <overrides>
+      <widgets ref="1">
+        <attributes key="foreground" value="#ffffff"/>
+      </widgets>
+    </overrides>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

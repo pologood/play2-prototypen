@@ -1,0 +1,9 @@
+@import views.html.common._
+
+@views.html.common.main(Messages("playauthenticate.verify.account.title")) {
+
+	<h1>@Messages("playauthenticate.verify.account.title")</h1>
+	<p>
+	@Messages("playauthenticate.verify.account.before") <a href="@controllers.common.routes.Account.verifyEmail">@Messages("playauthenticate.verify.account.first")</a>.<br/>
+	</p>
+}

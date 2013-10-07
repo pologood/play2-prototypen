@@ -1,0 +1,32 @@
+game.index.title=Treasurehunting - Game
+game.index.welcome.heading=Welcome to the Treasure Hunt
+game.index.welcome.text=in the euro region Nisa!
+game.index.welcome.paragraph1=Did you ever dreamed of beeing a treasure hunter? To go on an expedition to get to know people and countries and to encounter mysterious adventures with friends - that is not only fun for children. So we invite all the small and tall treasure hunters to go on a very special journey of discovery into the euro region Nisa within our game.
+game.index.welcome.paragraph2= In this region, the three countries Germany, Poland and the Czech Republic border each other, waiting for your visit with a huge wealth of interesting attractions, museums and recreational facilities. Here are also preserved many interesting legends, stories and traditional practices that can LHR read in the booklet of the game. But the region also has a special vocabulary that you can explore. Four different languages ​​are spoken in a very small area just: German, Polish, Czech and Sorbian. With the included game cards you can play in the language of our neighbors get to know and practice. So you can always communicate with your friends and neighbors on your journey through the euro region Nisa.
+game.index.welcome.greetings=Have fun and good luck on the treasure hunt!
+
+# singleplayer conf
+game.index.sp.conf.heading=Single Player
+game.index.sp.conf.gameName.label=Name:
+game.index.sp.conf.gameName.label.placeholder=Name of the Game
+game.index.sp.conf.gameName.error=The name of the game must not only consist out of spaces.
+game.index.sp.conf.counterColor.label=Counter Color:
+game.index.sp.conf.counterColor.red=Red
+game.index.sp.conf.counterColor.green=Green
+game.index.sp.conf.counterColor.blue=Blue
+game.index.sp.conf.playgroundName.label=Playground:
+game.index.sp.conf.submit=Let''s go!
+
+# game template
+game.template.info.heading=Scores
+game.template.info.modename.label=Game Mode:
+game.template.info.gamename.label=Game Name:
+
+# scores
+game.template.info.scores.heading.color=Counter
+game.template.info.scores.heading.username=User Name
+game.template.info.scores.heading.cards=Cards
+
+# singleplayer
+game.singleplayer.title=Treasurehunting - Single Player Game
+game.singleplayer.modename=Single Player

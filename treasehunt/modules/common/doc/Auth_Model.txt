@@ -1,0 +1,87 @@
+Play-Authenticate Realization
+
+= models =
+ 
+LinkedAccount ... verknüpfter Account
+* A: id, user, providerUserId, providerKey
+* M: finden, erzeugen und aktualisieren
+
+SecurityRole ... klassifizierte Rolle
+* Nutzer kann zu einer Zeit
+* Extensibility: Beliebige neue Rollen zur Laufzeit hinzufügen
+* Variability: zur Luafzeit Rolle einem Nutzer entziehen ist auch möglich
+
+TokenAction ... Authentifizierte Action (OAuth-Authentifikationstoken)
+* hat (Target)User, Type
+* läuft irgendwann aus (expires) und wurde irgendwann erzeugt (Date(s)) >> ist valide in bestimmten Zeitraum
+
+User ... Anwender Entität
+* besitzt beliebig viele LinkedAccounts, UserPermissions und SecurityRoles
+* hat id, Name, eMail, ...
+
+Type .. Email-Verifizierung oder Passwort-Reset
+
+UserPermission .. Deadbolt 2 Permission
+
+= controllers =
+
+Account
+* Passwort ändern
+* Email verifzieren
+* verlinken
+* mergen (Daten des Anwenders mergen)
+
+Application
+* index
+* einloggen
+* registrieren (signup)
+* profil zugriff
+* restricted Zugriff
+
+Signup ... Alles zum Registrieren
+* Passwort Reset
+* Passwort vergessen
+* Anzeige, ob Passwort existiert
+* Anzeige, dass oAuth-Credentials abgelehnt wurden
+
+= views =
+* partielle Templates (Wiederverwenden):
+ * Email eingeben
+ * Passwort eingeben
+ * Provider Icon und UI-Komponente zur Anzeige der verlinkten/unterstützten Provider
+* Login-Seite
+* Profil-Seite
+* Restricted Seite
+* Registrieren Seite
+
+= providers =
+
+MyLoginUsernamePasswordAuthUser ... Authentifikationsnutzer für die eigene Play-Anwendung
+
+MyUsernamePasswordAuthUser ... Authentifikationsnutzer (z.B. von Google)
+* hat provider, eMail, id (== hashed Passwort)
+* createPassword()
+
+MyUsernamePasswordAuthProvider ... Authentifikationsprovider (z.B. Google)
+* authetifizieren
+* getSessionAuthUser: hat Relation zu MyUsernamePasswordAuthUser
+* LoginForm holen
+* Verifikationsemails verwalten ()
+* Passwortreset generieren und senden
+
+= security =
+
+MyDeadboltHandler ... 
+* legt fest was vor dem Authentifikationscheck, was bei einem Auth.-Fehler passieren soll
+* getSubject(Context) ... Zugriff auf die User Entity
+* Zugriff auf dynamische Ressourcen
+
+= service =
+
+MyUserServicePlugin ... Legt fest, wei Nutzer in Datenbank gespeichert werden.
+* arbeitet mit AuthUser in providers
+* getLocalIdentity() .. lokle Identität holen
+* save() .. Nutzer in DB speichern
+* update() .. Nutzerdaten aktualisieren
+* merge() .. 2 Accounts auf einen mergen
+* link() .. neuen Account zu existierendem lokalen Nutzer hinzufügen

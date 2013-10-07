@@ -1,0 +1,92 @@
+@(lang: Lang)(customJS: Html = null)(customCSS: Html = null)(title: String)(selected: String)(content:Html)
+
+@import play.api.i18n._
+@import helper._
+@import be.objectify.deadbolt.java.views.html._
+@import be.objectify.deadbolt.core.utils.TemplateUtils._
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<title>@title</title>
+
+
+<link rel="stylesheet" media="screen" href="@controllers.admin.routes.Assets.at("stylesheets/main.css")">
+<link rel="shortcut icon" type="image/png" href="@controllers.admin.routes.Assets.at("images/favicon.png")">
+
+@customCSS
+
+<!-- ZK CSS -->
+<!-- <link rel="stylesheet" type="text/css" href="@controllers.admin.routes.Assets.at("javascripts/css/zk.css")"/> -->
+
+<!-- Locale-dependent messages -->
+
+<script type="text/javascript" src="@controllers.admin.routes.Assets.at("javascripts/js/lang.js")" 
+	charset="UTF-8"></script>
+<script src="@controllers.admin.routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"
+	></script>
+<script src="@controllers.admin.routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"
+	></script>
+
+
+<!-- ZK Widget library -->
+<!-- <script type="text/javascript" src="@controllers.admin.routes.Assets.at("javascripts/js/src/zk-all.js")" charset="UTF-8"></script> -->
+<!-- <script type="text/javascript" src="@controllers.admin.routes.Assets.at("javascripts/js/src/zuml.js")" charset="UTF-8"></script> -->
+
+@customJS
+
+
+
+
+</head>
+
+<body>
+
+	<div class="container-fluid">
+	  <div class="row-fluid">
+	    <div class="span2">
+	    
+	      	<!--Sidebar content-->
+	      	<ul class="nav nav-list">	      	  
+	      	  <li class="nav-header">Schatzsuche</li>
+			  <li class="@("active".when(selected == "index"))">
+			    <a href="@controllers.admin.routes.Application.index()">@Messages("treasehunt.navigation.admin.index")</a>
+			  </li>
+			  <li class="@("active".when(selected == "playgrounds"))">
+			  	<a href="@controllers.admin.routes.Playgrounds.playgrounds()">@Messages("treasehunt.navigation.admin.playgrounds")</a>
+			  </li>
+			  
+			  <li class="@("active".when(selected == "players"))">
+			  	<a href="@controllers.admin.routes.Players.players()">@Messages("treasehunt.navigation.admin.players")</a>
+			  </li>
+			  
+			  
+			  <li class="nav-header">Weitere Einstellungen</li>
+			  <li ><a href="@controllers.common.routes.Application.profile()">Profil</a></li>
+			  
+			  <li class="divider"></li>
+			  <li ><a href="#">Hilfe (Dummy)</a></li>
+			  
+			  
+			  
+			  @* 
+			  <li class="@("active".when(selected == "user"))">
+			  	<a href="@controllers.admin.routes.AdminController.user()">@Messages("treasehunt.navigation.admin.user")</a> 
+			  </li>
+			  *@
+			</ul>
+			
+	    </div>
+	    <div class="span10">
+	      
+	      <!--Body content-->
+	      @content
+	      
+	    </div>
+	  </div>
+	</div>
+	
+</body>
+</html>

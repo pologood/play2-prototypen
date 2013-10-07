@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" xmlns:o="http://wireframesketcher.com/1.0/model/overrides">
+  <widgets xsi:type="model:Master" id="1" measuredWidth="800" measuredHeight="600" dimmed="true">
+    <screen xsi:type="model:Screen" href="08%20GUI-Prototyp%20Template%20zur%20Spieldurchführung.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="2" x="532" y="269" height="204" measuredWidth="263" measuredHeight="204">
+    <screen xsi:type="model:WidgetGroup" href="assets/Bootstrap/Bootstrap.screen#Well"/>
+    <overrides>
+      <widgetChanges xsi:type="o:Delete" ref="163"/>
+      <widgets ref="162" width="263" height="204"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Master" id="3" x="542" y="430" measuredWidth="115" measuredHeight="30">
+    <screen xsi:type="model:WidgetGroup" href="assets/Bootstrap/Bootstrap.screen#Button%20Inverse"/>
+    <overrides>
+      <widgets ref="8" text="Spiel beenden"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Master" id="4" x="542" y="279" measuredWidth="92" measuredHeight="33">
+    <screen xsi:type="model:WidgetGroup" href="assets/Bootstrap/Bootstrap.screen#Heading%204"/>
+    <overrides>
+      <widgets ref="132" text="Spielende"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Label" id="7" x="619" y="149" width="171" text="Single Player" measuredWidth="171" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextArea" id="9" x="542" y="320" height="88" text="Du hast den Zielpunkt erreicht und 2 Karten &#xD;&#xA;gesammelt. Prima!&#xD;&#xA;&#xD;&#xA;Betätige die untere Schaltfläche, um das &#xD;&#xA;Spiel zu beenden." measuredWidth="240" measuredHeight="88">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Icon" id="10" y="91" width="533" height="509" measuredWidth="533" measuredHeight="509" icon="assets/09gui-prototypspielmodussingleplayerspielendespielfeldanzeige (large)"/>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 1.6 1"
+   width="32"
+   height="20"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="en.svg"
+   inkscape:export-filename="D:\DEVEL\Schatzsuche\git\260813\main\de.saxsys.treasurehunting\modules\de.saxsys.treasurehunting.common\public\images\lang\en.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <metadata
+     id="metadata21">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs19" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1600"
+     inkscape:window-height="1116"
+     id="namedview17"
+     showgrid="true"
+     inkscape:zoom="9.7866668"
+     inkscape:cx="-20.673053"
+     inkscape:cy="9.0484741"
+     inkscape:window-x="1592"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2998"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true" />
+  </sodipodi:namedview>
+  <clipPath
+     id="t">
+    <path
+       d="m 30,15 h 30 v 15 z m 0,0 V 30 H 0 z m 0,0 H 0 V 0 z m 0,0 V 0 h 30 z"
+       id="path5"
+       inkscape:connector-curvature="0" />
+  </clipPath>
+  <path
+     d="M 0.00408934,0.00682751 V 0.99581945 H 1.59615 V 0.00682751 z"
+     id="path7"
+     inkscape:connector-curvature="0"
+     style="fill:#00247d" />
+  <path
+     d="M 0.00408934,0.00682751 1.59615,0.99581945 m 0,-0.98899194 -1.59206066,0.98899194"
+     id="path9"
+     inkscape:connector-curvature="0"
+     style="stroke:#ffffff;stroke-width:0.17745633" />
+  <path
+     d="M 0,0 60,30 M 60,0 0,30"
+     clip-path="url(#t)"
+     id="path11"
+     inkscape:connector-curvature="0"
+     transform="matrix(0.02653435,0,0,0.03296642,0.00408934,0.00682751)"
+     style="stroke:#cf142b;stroke-width:4" />
+  <path
+     d="M 0.80011966,0.00682751 V 0.99581945 M 0.00408934,0.50132349 H 1.59615"
+     id="path13"
+     inkscape:connector-curvature="0"
+     style="stroke:#ffffff;stroke-width:0.29576054" />
+  <path
+     d="M 0.80011966,0.00682751 V 0.99581945 M 0.00408934,0.50132349 H 1.59615"
+     id="path15"
+     inkscape:connector-curvature="0"
+     style="stroke:#cf142b;stroke-width:0.17745633" />
+  <rect
+     style="fill:none;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:0.1;stroke-miterlimit:4;stroke-dasharray:none"
+     id="rect2991"
+     width="32"
+     height="20"
+     x="0"
+     y="0"
+     transform="scale(0.05,0.05)" />
+</svg>

@@ -1,0 +1,3 @@
+package controllers.common
+import controllers.AssetsBuilder
+object Assets extends AssetsBuilder

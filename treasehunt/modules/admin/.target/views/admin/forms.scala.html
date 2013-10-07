@@ -1,0 +1,251 @@
+@(lang: Lang, pgSelected: Playground = null, 
+	playgrounds:List[Playground], pathEditForms: List[Form[Path]] = null, pathCreateForm: Form[Path])
+
+@import helper._
+@import play.api.i18n._
+@import scala.collection.immutable._
+@import scala.util.control.Breaks._
+
+
+@implicitFieldConstructor = @{ FieldConstructor(views.html.admin.twitterBootstrapInputWithoutLabel.f) }
+
+@customCSS = {
+	<style type="text/css" media="screen">  
+		svg {
+		     background-image: url(/assets/images/map.png);
+		     background-repeat: no-repeat;
+		}
+		line {
+		    stroke:rgb(0,0,0);
+		    stroke-width:4;
+		}
+		circle {
+		        fill: white;  
+		        stroke: black;  
+		        stroke-width: 1;  
+		        -webkit-transition: all 350ms;  
+		}  
+		circle:hover {
+		        fill: orange;
+		        stroke-width: 1;  
+		    }
+	</style>
+}
+
+@customJS = {
+	<script type="text/javascript" src="@controllers.common.routes.Assets.at("javascripts/jquery-1.9.0.min.js")"></script>
+	<script type="text/javascript" src="@controllers.common.routes.Assets.at("javascripts/jquery.json-2.4.min.js")"></script>
+	<script type="text/javascript" src="@controllers.admin.routes.Assets.at("javascripts/playgrounds.js")" 
+		charset="UTF-8"></script>
+	<script>
+		$(function() {   
+			console.log("Document loaded ...");
+			showPreviewJson("@controllers.admin.routes.Playgrounds.showPreviewJson()", "@if(pgSelected!=null){@pgSelected.name}");
+		});
+	</script>
+}
+
+@views.html.common.main(Messages("admin.title")(lang),"admin") {
+		
+	@layout(lang)(customJS)(customCSS)(Messages("admin.title")(lang))("playgrounds"){  
+		
+		<h1>@Messages("admin.h1")(lang)</h1>
+		
+		@* ******** Select Playground ********** *@
+		
+		<div class="btn-group">
+		  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+		    @if(pgSelected!=null){Spielfeld: @pgSelected.name}else{Wähle ein Spielfeld}
+		    <span class="caret"></span>
+		  </a>
+		  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+		  	@for( (playground, index) <- playgrounds.zipWithIndex) {
+		    	<li><a href="@controllers.admin.routes.Playgrounds.load(playground.name)">@{index + ": " + playground.name}</a></li>
+			}
+		  </ul>
+		</div>
+		
+		<hr/>
+		
+		@* ****************************** Preview **************************@
+		
+		<h2>Vorschau</h2>
+		
+		<svg id="svgGraph" width="1200" height="900" version="1.1" xmlns="http://www.w3.org/2000/svg" />		
+		<p id="jsonresponse" class="text-info">Kein Spielfeld gewählt</p>
+		
+		<hr/>
+				
+		@* ***************************** Tabs ******************************** *@
+
+	    <ul class="nav nav-tabs">
+		  <li class="active">
+		  	<a href="@controllers.admin.routes.Playgrounds.pathNpoints()">Play Forms</a>
+		  </li>
+		  <li >
+		    <a href="@controllers.admin.routes.Playgrounds.points()">AJAX (Punkte)</a>
+		  </li>
+		  <li>
+		    <a href="@controllers.admin.routes.Playgrounds.paths()">AJAX (Pfade)</a>
+		  </li>
+		  <li >
+		    <a href="@controllers.admin.routes.Playgrounds.pointsWS()">Websocket</a>
+		  </li>
+		  <li>
+		    <a href="@controllers.admin.routes.Playgrounds.comet()">Comet</a>
+		  </li>
+		</ul>
+		
+		@* **************** Point Table ********************* *@		
+		
+		<div class="row-fluid">
+		
+			<div class="span12">
+			
+				<table class="table table-striped">
+			 		<tr>
+						<th align="center" width="60">@Messages("admin.paths.thid")(lang)</th>					
+						<th align="left">@Messages("admin.paths.thstartpoint")(lang)</th>		
+						<th align="left">@Messages("admin.paths.thendpoint")(lang)</th>
+						<th></th>
+						<th></th>
+					</tr>
+					
+					@for((pathEditForm,i) <- pathEditForms.zipWithIndex) {															
+							<tr>	
+								@form(controllers.admin.routes.Playgrounds.savePathNpoint){
+									
+									<td>
+										@inputText(pathEditForm("id"), 'readonly -> "readonly")
+									</td>										
+									<td>								
+										@defining(List.range(1,1200)) { list =>		 				
+							 				@select(pathEditForm("fromPoint")("x"), options = 
+									 				list.map(l => "%d".format(l) -> "%d".format(l))
+									 			, 'mylabel->"X:", 'id->("pointSelectX_From_"+pathEditForm("fromPoint")("id").value.get), 'onchange->"setDirty()")
+										}											
+										@defining(List.range(1,1200)) { list =>		 				
+							 				@select(pathEditForm("fromPoint")("y"), options = 
+									 				list.map(l => "%d".format(l) -> "%d".format(l))
+									 			, 'mylabel->"Y:", 'id->("pointSelectY_From_"+pathEditForm("fromPoint")("id").value.get), 'onchange->"setDirty()")
+										}
+										@inputText(pathEditForm("fromPoint")("id"), 'readonly -> "readonly", 'type -> "hidden")											
+									</td>										
+									<td>										
+										@defining(List.range(1,1200)) { list =>		 				
+							 				@select(pathEditForm("toPoint")("x"), options = 
+									 				list.map(l => "%d".format(l) -> "%d".format(l))
+									 			, 'mylabel->"X:", 'id->("pointSelectX_To_"+pathEditForm("toPoint")("id").value.get), 'onchange->"setDirty()")
+										}											
+										@defining(List.range(1,1200)) { list =>		 				
+							 				@select(pathEditForm("toPoint")("y"), options = 
+									 				list.map(l => "%d".format(l) -> "%d".format(l))
+									 			, 'mylabel->"Y:", 'id->("pointSelectY_To_"+pathEditForm("toPoint")("id").value.get), 'onchange->"setDirty()")
+										}
+										@inputText(pathEditForm("toPoint")("id"), 'readonly -> "readonly", 'type -> "hidden")										
+									</td>										
+									<td>
+										<input id="savePath_@pathEditForm("id").value" type="submit" class="btn" value="Save" />
+									</td>
+								}									
+								<td>
+									@form(controllers.admin.routes.Playgrounds.deletePathNpoint(pathEditForm("id").value.toLong)){
+										<input type="submit" class="btn" value="Delete" />
+									}																												
+								</td>
+							</tr>					
+					}
+					
+					@form(controllers.admin.routes.Playgrounds.createPathNpoint) {
+						
+						<tr>				 			
+				 			<td width="60">								
+							</td>										
+							<td width="60">								
+								@defining(List.range(1,1200)) { list =>		 				
+					 				@select(pathCreateForm("fromPoint")("x"), options = 
+							 				list.map(l => "%d".format(l) -> "%d".format(l))
+							 			, 'mylabel->"X:", 'onchange->"setDirty()")
+								}											
+								@defining(List.range(1,1200)) { list =>		 				
+					 				@select(pathCreateForm("fromPoint")("y"), options = 
+							 				list.map(l => "%d".format(l) -> "%d".format(l))
+							 			, 'mylabel->"Y:", 'onchange->"setDirty()")
+								}											
+							</td> 										
+							<td>
+								@defining(List.range(1,1200)) { list =>		 				
+					 				@select(pathCreateForm("toPoint")("x"), options = 
+							 				list.map(l => "%d".format(l) -> "%d".format(l))
+							 			, 'mylabel->"X:", 'onchange->"setDirty()")
+								}											
+								@defining(List.range(1,1200)) { list =>		 				
+					 				@select(pathCreateForm("toPoint")("y"), options = 
+							 				list.map(l => "%d".format(l) -> "%d".format(l))
+							 			, 'mylabel->"Y:", 'onchange->"setDirty()")
+								}										
+							</td>										
+							<td>
+								<input type="submit" class="btn" value="Create" />
+							</td>
+							<td></td>
+				 		</tr>
+			 		}
+			
+				</table>
+			</div>
+	 	</div>
+	 	
+
+								
+					
+					
+					
+					
+					
+					
+			 		
+					
+					@*
+					@form(controllers.admin.routes.Playgrounds.createPath) {
+						<tr>
+				 			<td>@inputText(pointCreateForm("fromPoint"), 'id -> "fromPoint")</td>
+				 			<td>@inputText(pointCreateForm("toPoint"), 'id -> "toPoint")</td>
+							<td><input type="submit" class="btn" value="New"></td>
+				 		</tr>
+			 		}
+			 		*@
+			 		
+			 	
+			 	
+			 
+			 	
+			 	@*
+			 	@if(paths!=null && paths.size>=10) {
+					<div class="pagination">
+					  <ul>
+					    <li><a href="#prev">Prev</a></li>
+					    <li><a href="#">1</a></li>
+					    <li><a href="#">2</a></li>
+					    <li><a href="#">3</a></li>
+					    <li><a href="#">4</a></li>
+					    <li><a href="#">5</a></li>
+					    <li><a href="#next">Next</a></li>
+					  </ul>
+					</div>
+				}
+				*@
+		 	
+		 	
+
+        
+        
+		
+			
+	    
+	}   
+}
+
+
+
+

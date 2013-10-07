@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" xmlns:o="http://wireframesketcher.com/1.0/model/overrides">
+  <widgets xsi:type="model:Master" id="69" measuredWidth="800" measuredHeight="600" dimmed="true">
+    <screen xsi:type="model:Screen" href="08%20GUI-Prototyp%20Template%20zur%20Spieldurchführung.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="21" x="532" y="269" measuredWidth="263" measuredHeight="316">
+    <screen xsi:type="model:WidgetGroup" href="assets/Bootstrap/Bootstrap.screen#Well"/>
+    <overrides>
+      <widgetChanges xsi:type="o:Delete" ref="163"/>
+      <widgets ref="162" width="263" height="316"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Master" id="25" x="542" y="540" measuredWidth="102" measuredHeight="30">
+    <screen xsi:type="model:WidgetGroup" href="assets/Bootstrap/Bootstrap.screen#Button%20Inverse"/>
+    <overrides>
+      <widgets ref="8" text="Spiel starten"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Master" id="44" x="542" y="279" measuredWidth="88" measuredHeight="33">
+    <screen xsi:type="model:WidgetGroup" href="assets/Bootstrap/Bootstrap.screen#Heading%204"/>
+    <overrides>
+      <widgets ref="132" text="Spielstart"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Tooltip" id="45" x="572" y="248" text="Bezeichnung der gegenwärtigen Aktion" measuredWidth="218" measuredHeight="40">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Panel" id="47" x="542" y="320" width="243" height="201" measuredWidth="243" measuredHeight="201"/>
+  <widgets xsi:type="model:Label" id="70" x="619" y="149" width="171" text="Single Player" measuredWidth="171" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Icon" id="71" y="91" width="533" height="509" measuredWidth="533" measuredHeight="509" icon="assets/09gui-prototypspielmodussingleplayerspielstartspielfeldanzeige (large)"/>
+  <widgets xsi:type="model:TextArea" id="73" x="549" y="327" text="Betätige die Schaltfläche, um das Spiel zu &#xD;&#xA;starten." measuredWidth="228" measuredHeight="38" borderColor="#ffffff">
+    <font/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

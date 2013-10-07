@@ -1,0 +1,123 @@
+@(localUser: models.common.User = null, userForm: Form[models.common.User], languages: List[Lang])
+
+@import com.feth.play.module.pa.views.html._
+@import helper._
+@* @import helper.twitterBootstrap._ *@
+@implicitFieldConstructor = @{ FieldConstructor(views.html.twitterBootstrapInput.f) }
+@* views.html.common.twitter. *@
+@* @implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapFieldConstructor.f) } *@
+	
+	@* twitterBootstrapInput.f) } *@
+
+
+@views.html.common.main(Messages("playauthenticate.profile.title"),"profile") {
+    
+    <h1>@Messages("playauthenticate.profile.title")</h1>
+    
+    @*
+    <p>
+    Your name is @localUser.name and your email address is @localUser.email!
+    <i>
+    @if(!localUser.emailValidated) {
+      (<a href="@controllers.common.routes.Account.verifyEmail">unverified - click to verify</a>)
+    } else {
+      (verified)
+    }</i>
+    <br />
+    Your first name is @localUser.firstName and your last name is @localUser.lastName
+    <br/>
+    @defining(localUser.getProviders()) { providers =>
+        @if(providers.size() > 0) {
+        @if(providers.size() ==1) {
+            @Messages("playauthenticate.profile.providers_one")
+        } else {
+            @Messages("playauthenticate.profile.providers_many",providers.size().toString())
+        }
+        @for(p <- providers) {
+            @_providerIcon(p)
+        }
+        <br/>
+        }
+    }
+    
+    <br/>
+    @currentAuth() { auth =>
+        @Messages("playauthenticate.profile.logged") @_providerIcon(auth.getProvider())<br/>
+        @if(auth.expires() != -1){
+            @Messages("playauthenticate.profile.session", auth.getId(), controllers.common.Application.formatTimestamp(auth.expires()))
+        } else {
+            @Messages("playauthenticate.profile.session_endless", auth.getId())
+        }
+    }
+    <br/>
+    <ul>
+    	<li><a href="@controllers.common.routes.Account.changePassword">@Messages("playauthenticate.profile.password_change")</a></li>
+    </ul>
+    </p>
+    
+    *@
+    
+    <p>
+	    Hallo @localUser.name, an dieser Stelle kannst du dein Benutzerprofil bearbeiten.
+	</p>
+	
+	<hr>
+	
+	<p>
+	    @currentAuth() { auth =>
+	        @Messages("playauthenticate.profile.logged") @_providerIcon(auth.getProvider())<br/>
+	        @if(auth.expires() != -1){
+	            @Messages("playauthenticate.profile.session", auth.getId(), controllers.common.Application.formatTimestamp(auth.expires()))
+	        } else {
+	            @Messages("playauthenticate.profile.session_endless", auth.getId())
+	        }
+	    }
+    </p>
+    
+    <hr>
+    
+    <ul>
+    	<li><a href="@controllers.common.routes.Account.changePassword">@Messages("playauthenticate.profile.password_change")</a></li>
+    </ul>
+    
+    @helper.form(controllers.common.routes.Application.saveProfile, 'class -> "well form-horizontal") {
+		
+		@* simple text entries *@
+		@inputText(userForm("email"), 'placeholder->"Email", 'id->"inputEmail", 'mylabel->"Email:")
+		@inputText(userForm("name"), 'placeholder->"Nickname", 'id->"name", 'mylabel->"Spitzname:")
+		@inputText(userForm("firstName"), 'placeholder->"Vorname", 'id->"firstName", 'mylabel->"Vorname:")
+		@inputText(userForm("lastName"), 'placeholder->"Nachname", 'id->"lastName", 'mylabel->"Nachname:")
+		
+		@*
+		@helper.inputRadioGroup(userForm("language"),
+		            options = languages.map(l => l.code -> l.code),
+		            'mylabel->"Sprache",
+		            '_error -> userForm("language").error.getOrElse("language")
+		            )
+		*@        
+		@select(userForm("language"), languages.map(l => l.code -> l.code), 'mylabel->"Sprache:")				
+		
+		@checkbox((userForm("roles"))("[0]"), 'mylabel->"Rollen:", '_text->"Spieler", 
+			'value->security.common.Roles.ROLE_PLAYER)					
+		@checkbox(userForm("roles").apply("[1]"), '_text->"Spielführer / Administrator", 
+			'value->security.common.Roles.ROLE_ADMIN)                      
+		@* example with repeat *@
+		@*
+		@repeat(userForm("roles"), models.common.SecurityRole.find.all().size()) { roleField =>				
+			@checkbox(roleField, '_text->"Spielführer / Administrator",
+				'value->security.common.Roles.ROLE_ADMIN
+			)					
+		}
+		*@		
+		
+		@textarea(userForm("description"), 'rows -> 3, 'cols -> 100, 'mylabel->"Beschreibung zur Person:")
+		@inputDate(userForm("birthDate"), 'size -> 10, 'mylabel->"Geburtsdatum:")
+		
+		<div class="clearfix control-group">
+			<label class="control-label" for="submitProfile"></label>
+			<div class="input controls">
+ 				<button id="submitProfile" type="submit" class="btn btn-primary">@Messages("admin.user.submit")(lang)</button>
+    		</div>			
+		</div>			
+    } 
+}

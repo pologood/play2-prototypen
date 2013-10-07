@@ -1,0 +1,42 @@
+@* players Template File *@
+@(lang: Lang, allUser: List[models.common.User], allRoles: List[models.common.SecurityRole])
+
+	userForm: Form[models.common.User])
+@*	, 
+	allPermissions: List[UserPermission])
+*@
+
+@import helper._
+@import play.api.i18n._
+@import models.common.User
+
+@views.html.common.main("Mitspieler","admin"){	
+	
+	@* Der Titel wird nicht berücksichtigt *@
+	@layout(lang)(null)(null)(("Hallo" + "-" + "Stefan"))("players"){	
+		 
+	    <h1>Mitspieler verwalten</h1>
+	    
+	    <table class="table table-striped">
+			<tr class="info">
+				<th>Anwender</th>
+				<th>Rollen</th>
+				<th>Rechte</th>
+			</tr>
+			<tr>
+				@for(user<-allUser) {
+					<td>@user.name</td>
+					@for((role, i)<-allRoles.zipWithIndex) {
+						@if(i>0){<tr><td></td>} 
+						<td>@role.roleName</td>								
+						@for((perm, j)<-role.permissions.zipWithIndex) {
+							@if(j>0) {</tr><tr><td></td><td></td>}
+							<td>@perm.value</td>						
+						}
+						</tr>
+					}
+				}
+			</tr>				
+		</table>									
+	}   
+}	

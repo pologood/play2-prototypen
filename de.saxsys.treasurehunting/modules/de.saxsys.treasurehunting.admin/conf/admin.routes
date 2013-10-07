@@ -1,0 +1,8 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET     /admin                      de.saxsys.treasurehunting.admin.controllers.AdminController.index
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file           	de.saxsys.treasurehunting.admin.controllers.Assets.at(path="/public", file)

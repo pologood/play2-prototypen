@@ -1,0 +1,43 @@
+admin.title=Schatzsuche Administration
+admin.h1=Schatzsuche Administration
+admin.window.title=Spielfeld Verwaltung
+admin.selectpg=Wähle ein Spielfeld:
+admin.loadpg=Laden
+admin.points.label=Knoten
+admin.paths.label=Pfade
+admin.points.description=Das ausgewählte Spielfeld {0,choice,0#hat keine Punkte|1#hat einen Punkt|1<hat {0} Punkte} defined.
+admin.paths.description=Bearbeiten Sie die Pfade zwischen den Knoten.
+admin.paths.thstartpoint=Startpunkt
+admin.paths.thendpoint=Endpunkt
+admin.paths.thid=ID
+admin.points.x=X
+admin.points.y=Y
+
+# user 
+admin.user.title=Nutzerprofil
+admin.user.h1=Nutzerprofil
+admin.user.selectlang=Wähle eine Sprache:
+admin.user.submit=Speichern
+
+# index
+admin.index.title=Willkommen
+admin.index.h1=Willkommen bei der Administration
+
+# generic
+admin.badRequest="Bad Request!!!"
+
+### --- Administration START
+
+# navigation
+treasehunt.navigation.admin.index=Startseite
+treasehunt.navigation.admin.playgrounds=Spielfelder
+treasehunt.navigation.admin.user=Profil
+treasehunt.navigation.admin=Administration
+
+treasehunt.admin.title=Administration
+treasehunt.admin.secrets=Überall Geheimnisse!
+
+# players
+treasehunt.navigation.admin.players=Mitspieler
+
+### --- Administration END

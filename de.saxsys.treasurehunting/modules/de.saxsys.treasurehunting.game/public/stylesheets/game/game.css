@@ -1,0 +1,31 @@
+#div-playground {
+}
+
+#div-ia {
+	min-width: 350px;
+	padding: 10px;
+}
+
+#div-game-controls {	
+	overflow:hidden;
+	width: 107px;
+	padding: 10px;
+	float: right;
+}
+
+#div-resume,#div-pause,#div-restart,#div-cancel {
+	width:32px;
+	hight:32px;
+	margin-right:5px;
+ 	float:left;
+}
+
+#div-cancel {
+	margin-right:0px;
+}
+
+#div-resume:hover,#div-pause:hover,#div-restart:hover,#div-cancel:hover,#div-info:hover
+	{
+	box-shadow: 0 0 10px white;
+	transition: all .2s linear;
+}

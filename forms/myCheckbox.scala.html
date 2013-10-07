@@ -1,0 +1,16 @@
+@(elements: views.html.helper.FieldElements)
+
+@import helper._
+@import play.api.i18n._
+
+@boxValue = @{elements.args.toMap.get('value).getOrElse("true") }
+
+<dl class="@if(elements.hasErrors) {error}" id="@{elements.id+"__field"}">
+    <!-- <dt><label for="roles_0_">roles[0]</label></dt> --> 
+    <dd>
+		<input type="checkbox" id="@elements.field.id" name="@elements.field.name" value="@elements.field.value" 
+			@(if(elements.field.value != "") "checked" else "")>
+		<span>@elements.args.toMap.get('_text)</span>
+		<span class="errors">@elements.field.errors.mkString(", ")</span>      
+	</dd>    
+</dl>

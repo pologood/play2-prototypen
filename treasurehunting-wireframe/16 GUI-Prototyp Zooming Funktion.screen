@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" xmlns:o="http://wireframesketcher.com/1.0/model/overrides">
+  <widgets xsi:type="model:WidgetGroup" id="1" measuredWidth="69" measuredHeight="237">
+    <widgets xsi:type="model:WidgetGroup" id="2" x="18" y="59" measuredWidth="32" measuredHeight="178">
+      <widgets xsi:type="model:Master" id="3" y="12" height="158" measuredWidth="32" measuredHeight="158">
+        <screen xsi:type="model:WidgetGroup" href="assets/Bootstrap/Bootstrap.screen#Well"/>
+        <overrides>
+          <widgetChanges xsi:type="o:Delete" ref="163"/>
+          <widgets ref="162" width="32" height="158"/>
+        </overrides>
+      </widgets>
+      <widgets xsi:type="model:VSlider" id="4" x="8" y="45" measuredWidth="17" measuredHeight="100" value="14"/>
+      <widgets xsi:type="model:Label" id="5" x="3" text="+" measuredWidth="28" measuredHeight="53">
+        <font size="32px" bold="true"/>
+      </widgets>
+      <widgets xsi:type="model:Label" id="6" x="8" y="125" text="-" measuredWidth="18" measuredHeight="53">
+        <font size="32px" bold="true"/>
+      </widgets>
+    </widgets>
+    <widgets xsi:type="model:WidgetGroup" id="7" measuredWidth="69" measuredHeight="65">
+      <widgets xsi:type="model:Master" id="8" x="6" y="5" measuredWidth="57" measuredHeight="55">
+        <screen xsi:type="model:WidgetGroup" href="assets/Bootstrap/Bootstrap.screen#Well"/>
+        <overrides>
+          <widgetChanges xsi:type="o:Delete" ref="163"/>
+          <widgets ref="162" width="57" height="55"/>
+        </overrides>
+      </widgets>
+      <widgets xsi:type="model:Icon" id="9" x="37" y="17" measuredWidth="32" measuredHeight="32" icon="submenu (large)"/>
+      <widgets xsi:type="model:Icon" id="10" x="18" measuredWidth="32" measuredHeight="32" icon="line-arrow-up (large)"/>
+      <widgets xsi:type="model:Icon" id="11" x="18" y="33" measuredWidth="32" measuredHeight="32" icon="line-arrow-down (large)"/>
+      <widgets xsi:type="model:Icon" id="12" y="17" measuredWidth="32" measuredHeight="32" icon="line-arrow-left (large)"/>
+    </widgets>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

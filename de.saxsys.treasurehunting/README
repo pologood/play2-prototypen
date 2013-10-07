@@ -1,0 +1,32 @@
+### Build Eclipse Project Files with Sources ###
+
+cd treasurehunting
+play
+[treasurehunting] $ eclipse with-source=true skip-parents=false 
+
+### Run Application for System Testing and Production ###
+
+For development the default InMemory-DB H2 is configured with the 
+conf/application.conf. Thus develop out of the box and never use
+Helpers.inMemoryDB() so the tests may also be run as integration or 
+system tests using PostgreSQL!
+
+For running and testing the application in real life circumstances
+(i.e. the production environment) 
+use the alternative configuration file production.conf (using PostgreSQL-DB) 
+by specifying the dynamic parameter config.resource like this:
+
+Running with production conf:
+play -Dconfig.resource=production.conf run
+
+Deployment with production conf:
+play -Dconfig.resource=production.conf start
+
+Play is not supporting windows in production mode, therefore <stage> and <start> won’t work under windows.
+
+System Testing with production.conf:
+play -Dconfig.resource=production.conf test
+
+### Run Application in Debug Mode (including H2 Browser and Auto Compilation) ###
+
+play debug h2-browser ~run

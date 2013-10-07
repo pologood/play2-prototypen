@@ -1,0 +1,16 @@
+/* Internationalization */
+
+#div-lang {	
+	padding-top: 0px;
+	padding-bottom: 0px;	
+}
+
+#div-lbl-lang {
+	display: inline-block; 
+	width: 100px;
+}
+
+.div-lang-value {
+	display: inline-block; 
+	margin-right: 10px;
+}

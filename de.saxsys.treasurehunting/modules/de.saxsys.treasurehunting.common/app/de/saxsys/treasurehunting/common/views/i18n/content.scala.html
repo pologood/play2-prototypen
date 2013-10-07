@@ -1,0 +1,27 @@
+@(lang: Lang = null)(implicit divLangClass: String = "", pLblLangClass: String = "")
+
+@import helper._
+@import play.api.i18n._
+
+@import play.mvc._
+
+@import de.saxsys.treasurehunting.common.controllers._
+
+<div id="div-lang" class="@divLangClass">
+  
+  <div id="div-lbl-lang">
+  	<p class="@pLblLangClass">@Messages("common.lang.label")(lang)</p>
+  </div>
+  
+  @for(supportedLang:String <- play.Configuration.root().getString("application.langs").split(",")) {
+  	<div class="div-lang-value">
+	  <a id="a-@supportedLang" title="@Messages("common.lang.a."+supportedLang+".tooltip")(lang)" 
+	    		href='@routes.CommonController.setLang(supportedLang, play.mvc.Controller.request().uri())' class="">
+	    <img src="@{if(lang.code==supportedLang){routes.Assets.at("images/lang/"+supportedLang+".png")} 
+	    		else {routes.Assets.at("images/lang/"+supportedLang+"-disabled.png")}}" />
+	  </a>
+	</div>
+  }
+   
+</div>
+

@@ -1,0 +1,108 @@
+# YAML testdata will be inserted on application start, see /app/Global.java
+
+# --------------
+# |   points   |
+# --------------
+points:
+
+# points for playground 'big'
+- &a !!models.Point { x: 100, y: 100, city: false}
+- &b !!models.Point { x: 130, y: 150, city: false}
+- &c !!models.Point { x: 150, y: 300, city: false}
+- &d !!models.Point { x: 170, y: 350, city: false}
+- &e !!models.Point { x: 200, y: 200, city: false}
+- &f !!models.Point { x: 220, y: 220, city: false}
+- &g !!models.Point { x: 210, y: 300, city: false}
+- &h !!models.Point { x: 250, y: 250, city: false}
+- &i !!models.Point { x: 270, y: 200, city: false}
+
+# points for playground 'small'
+- &a2 !!models.Point { x: 100, y: 100, city: false}
+- &b2 !!models.Point { x: 150, y: 150, city: false}
+- &c2 !!models.Point { x: 150, y: 300, city: false}
+- &d2 !!models.Point { x: 200, y: 350, city: false}
+- &e2 !!models.Point { x: 200, y: 200, city: false}
+
+# points for playground 'foo'
+
+- &a3 !!models.Point { x: 110, y: 130, city: false}
+- &b3 !!models.Point { x: 180, y: 180, city: false}
+- &c3 !!models.Point { x: 200, y: 250, city: false}
+- &d3 !!models.Point { x: 300, y: 290, city: true} # Bautzen
+
+- &e3 !!models.Point { x: 290, y: 330, city: false}
+- &f3 !!models.Point { x: 400, y: 250, city: false}
+- &g3 !!models.Point { x: 460, y: 280, city: false}
+- &h3 !!models.Point { x: 500, y: 320, city: false}
+- &i3 !!models.Point { x: 530, y: 370, city: true} # Görlitz
+
+- &j3 !!models.Point { x: 490, y: 410, city: false}
+- &k3 !!models.Point { x: 440, y: 450, city: false}
+- &l3 !!models.Point { x: 450, y: 500, city: false}
+- &m3 !!models.Point { x: 460, y: 560, city: true} # Zittau
+
+- &n3 !!models.Point { x: 570, y: 310, city: false}
+- &o3 !!models.Point { x: 620, y: 300, city: false}
+- &p3 !!models.Point { x: 680, y: 320, city: false}
+- &q3 !!models.Point { x: 760, y: 360, city: true} # Wroclaw
+- &r3 !!models.Point { x: 800, y: 400, city: false}
+
+# -------------
+# |   paths   |
+# -------------
+# paths
+
+paths:
+
+# paths for playground 'big'
+- &1 !!models.Path {fromPoint: *a, toPoint: *b}
+- &2 !!models.Path {fromPoint: *b, toPoint: *c}
+- &3 !!models.Path {fromPoint: *c, toPoint: *d}
+- &4 !!models.Path {fromPoint: *d, toPoint: *g}
+- &5 !!models.Path {fromPoint: *d, toPoint: *h}
+- &6 !!models.Path {fromPoint: *h, toPoint: *i}
+- &7 !!models.Path {fromPoint: *c, toPoint: *e}
+- &8 !!models.Path {fromPoint: *c, toPoint: *f}
+
+# paths for playground 'small'
+- &10 !!models.Path {fromPoint: *a2, toPoint: *b2}
+- &11 !!models.Path {fromPoint: *b2, toPoint: *c2}
+- &12 !!models.Path {fromPoint: *c2, toPoint: *d2}
+- &13 !!models.Path {fromPoint: *d2, toPoint: *e2}
+
+# paths for playground 'foo'
+- &21 !!models.Path {fromPoint: *a3, toPoint: *b3}
+- &22 !!models.Path {fromPoint: *b3, toPoint: *c3}
+- &23 !!models.Path {fromPoint: *c3, toPoint: *e3}
+- &24 !!models.Path {fromPoint: *e3, toPoint: *f3}
+- &25 !!models.Path {fromPoint: *e3, toPoint: *d3}
+- &26 !!models.Path {fromPoint: *f3, toPoint: *g3}
+
+- &27 !!models.Path {fromPoint: *g3, toPoint: *h3}
+- &28 !!models.Path {fromPoint: *h3, toPoint: *i3}
+- &29 !!models.Path {fromPoint: *i3, toPoint: *j3}
+- &30 !!models.Path {fromPoint: *j3, toPoint: *k3}
+- &31 !!models.Path {fromPoint: *k3, toPoint: *l3}
+- &32 !!models.Path {fromPoint: *l3, toPoint: *m3}
+
+- &33 !!models.Path {fromPoint: *i3, toPoint: *n3}
+- &34 !!models.Path {fromPoint: *n3, toPoint: *o3}
+- &35 !!models.Path {fromPoint: *o3, toPoint: *p3}
+- &36 !!models.Path {fromPoint: *p3, toPoint: *q3}
+- &37 !!models.Path {fromPoint: *q3, toPoint: *r3}
+
+# -------------------
+# |   playgrounds   |
+# -------------------
+# playgrounds
+
+playgrounds:
+
+# big
+- !!models.Playground {name: big, paths: [*1,*2,*3,*4,*5,*6,*7,*8]}
+
+# small
+- !!models.Playground {name: small, paths: [*10,*11,*12,*13]}
+
+# foo
+- !!models.Playground {name: foo, paths: [*21,*22,*23,*24,*25,*26,*27,*28,*29,*30,*31,*32,*33,*34,*35,*36,*37]}

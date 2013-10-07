@@ -1,0 +1,13 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET     /game                       					de.saxsys.treasurehunting.game.controllers.GameController.index
+POST    /game/singleplayer/startSPGame      			de.saxsys.treasurehunting.game.controllers.GameController.startSPGame
+GET     /game/singleplayer          					de.saxsys.treasurehunting.game.controllers.GameController.singleplayer(game: Long)
+GET		/game/singleplayer/initializeSinglePlayerGame	de.saxsys.treasurehunting.game.controllers.GameController.initializeSinglePlayerGame(game: Long)
+GET     /game/visitorarena                  			de.saxsys.treasurehunting.game.controllers.GameController.visitorarena
+POST    /game/visitorarena/startVAGame      			de.saxsys.treasurehunting.game.controllers.GameController.startVAGame
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file           	de.saxsys.treasurehunting.game.controllers.Assets.at(path="/public", file)

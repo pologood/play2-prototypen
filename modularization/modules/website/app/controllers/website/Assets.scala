@@ -1,0 +1,3 @@
+package controllers.website
+import controllers.AssetsBuilder
+object Assets extends AssetsBuilder

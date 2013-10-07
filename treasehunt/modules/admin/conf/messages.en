@@ -1,0 +1,38 @@
+admin.title=Treasure Hunting Administration
+admin.h1=Treasure Hunting Administration
+admin.window.title=Manage Playground
+admin.selectpg=Select a playground:
+admin.loadpg=Load
+admin.points.label=Points
+admin.paths.label=Paths
+admin.points.description=The selected playground {0,choice,0#has no points|1#has one point|1<has {0} points} defined.
+admin.paths.description=Edit paths between points.
+admin.paths.thstartpoint=From Point
+admin.paths.thendpoint=To Point
+admin.paths.thid=ID
+admin.points.x=X
+admin.points.y=Y
+
+# user 
+admin.user.title=User Profile
+admin.user.h1=User Profile
+admin.user.selectlang=Select a language:
+admin.user.submit=Save
+
+# index
+admin.index.title=Welcome
+admin.index.h1=Welcome!!!
+
+# generic
+admin.badRequest="Bad Request!!!"
+
+### --- Administration START
+
+treasehunt.admin.title=Treasure Hunting Administration
+treasehunt.admin.secrets=Überall Geheimnisse!
+
+# players
+treasehunt.navigation.admin.players=Players
+
+
+### --- Administration END

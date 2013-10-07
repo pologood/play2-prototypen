@@ -1,0 +1,59 @@
+
+@main(Messages("treasehunt.index.title")) {
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>@Messages("treasehunt.index.title")</h1>
+        <p>@Messages("treasehunt.index.title.intro")</p>
+      </div>
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="span4">
+          <h2>@Messages("treasehunt.index.video.title")</h2>
+           <p>@Messages("treasehunt.index.video.text")</p>
+          <p><a class="btn" href="#">Video starten &raquo;</a></p>
+        </div>
+        <div class="span4">
+          <h2>Registriere dich!</h2>
+           <p>Um das Spiel spielen zu können, musst du dich regsitrieren.</p>
+          <p><a class="btn" href="@controllers.common.routes.Application.signup()">Registrieren &raquo;</a></p>
+       </div>
+        <div class="span4">
+          <h2>Spielanleitung</h2>
+          <p>Lies dir die Spielanleitung durch.</p>
+          <p><a class="btn" href="#">Spielanleitung lesen &raquo;</a></p>
+        </div>
+      </div>
+      
+      <hr>
+      
+      <!-- secure Json-Redirect -->
+      <a class="btn" onClick="secureJsonCall()">Gesicherter AJAX-Aufruf</a>
+      <p id="jsonresponse"></p>
+      <script type="text/javascript">
+		
+			<!--
+				function secureJsonCall() {	
+			      	
+			      	$("#jsonresponse").html("Greife zu...");
+			      	
+			      	$.ajax({
+						type:'get',
+					  	url:'http://localhost:9000/secureJsonRedirect',
+					  	dataType: 'json',
+						success: function(data) {
+							$("#jsonresponse").html("Zugriff erfolgt ...");
+						},
+						error: function(data) {
+							var pdata = eval(data);							
+							var pResponseText = $.parseJSON(data.responseText);
+							if(pdata.status==400 && pResponseText.status=="Authentification Error") {
+								window.location = "@controllers.common.routes.Application.login";
+							}
+						}				
+					});
+			      	
+			    }	
+			-->
+	  </script>
+    }

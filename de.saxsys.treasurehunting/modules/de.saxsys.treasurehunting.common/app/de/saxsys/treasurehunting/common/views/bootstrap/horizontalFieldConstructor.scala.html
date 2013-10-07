@@ -1,0 +1,16 @@
+@(elements: views.html.helper.FieldElements)
+
+@import play.api.i18n._
+@import views.html.helper._
+
+@**************************************************
+* Generate input according twitter bootsrap rules *
+**************************************************@
+
+<div id="div-@elements.id" class="control-group @if(elements.hasErrors){error}"> 
+    <div id="lbl-@elements.id">
+    	<span class="control-label">@elements.args.get('_label)</span> 
+    </div>
+    <div id="div-input-@elements.id">@elements.input</div>   
+    <span id="help-@elements.id" class="help-block">@elements.errors(elements.lang).mkString(", ")</span>   
+</div>

@@ -1,0 +1,147 @@
+@(lang: Lang, pgSelected: Playground = null, playgrounds:List[Playground]) 
+
+@import helper._
+@import play.api.i18n._
+@import scala.collection.immutable._
+
+@customCSS = {
+	<style type="text/css" media="screen">  
+		svg {
+		     background-image: url(/assets/images/map.png);
+		     background-repeat: no-repeat;
+		}
+		line {
+		    stroke:rgb(0,0,0);
+		    stroke-width:4;
+		}
+		circle {
+		        fill: white;  
+		        stroke: black;  
+		        stroke-width: 1;  
+		        -webkit-transition: all 350ms;  
+		}  
+		circle:hover {
+		        fill: orange;
+		        stroke-width: 1;  
+		}
+	</style>
+}
+
+@customJS = {
+	<script type="text/javascript" src="@controllers.common.routes.Assets.at("javascripts/jquery-1.9.0.min.js")"></script>
+	<script type="text/javascript" src="@controllers.common.routes.Assets.at("javascripts/jquery.json-2.4.min.js")"></script>
+    <script type="text/javascript" src="@controllers.admin.routes.Assets.at("javascripts/playgrounds.js")" 
+		charset="UTF-8"></script>
+	<script>
+		$(function() {   
+			console.log("Document loaded ...");	
+			initPlaygroundComet('@controllers.admin.routes.Playgrounds.administratePlayground().webSocketURL(request)');	
+		});
+	</script>
+}
+
+@views.html.common.main(Messages("admin.title")(lang),"admin") {
+		
+	@layout(lang)(customJS)(customCSS)(Messages("admin.title")(lang))("playgrounds"){  
+		
+		<h1>@Messages("admin.h1")(lang)</h1>
+	    
+		@* ******** Select Playground ********** *@
+		
+		<div class="btn-group">
+		  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+		    @if(pgSelected!=null){Spielfeld: @pgSelected.name}else{Wähle ein Spielfeld}
+		    <span class="caret"></span>
+		  </a>
+		  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+		  	@for( (playground, index) <- playgrounds.zipWithIndex) {
+		    	<li><a href="@controllers.admin.routes.Playgrounds.load(playground.name)">@{index + ": " + playground.name}</a></li>
+			}
+		  </ul>
+		</div>
+		
+		@* ****************************** Preview **************************@
+		
+		<h2>Vorschau</h2>
+		
+		<svg id="svgGraph" width="1200" height="900" version="1.1" xmlns="http://www.w3.org/2000/svg" />
+		<p id="websocketInfo">Initial</p>
+				
+		@* ***************************** Tabs ******************************** *@
+
+	    <p>
+		    <ul class="nav nav-tabs">
+			  <li>
+			  	<a href="@controllers.admin.routes.Playgrounds.pathNpoints()">Play Forms</a>
+			  </li>
+			  <li >
+			    <a href="@controllers.admin.routes.Playgrounds.points()">AJAX (Punkte)</a>
+			  </li>
+			  <li>
+			    <a href="@controllers.admin.routes.Playgrounds.paths()">AJAX (Pfade)</a>
+			  </li>
+			  <li>
+			    <a href="@controllers.admin.routes.Playgrounds.pointsWS()">Websocket</a>
+			  </li>
+			  <li  class="active">
+			    <a href="@controllers.admin.routes.Playgrounds.comet()">Comet</a>
+			  </li>
+			</ul>		
+		</p>
+		
+		@* **************** Point Table ********************* *@
+		
+		<div class="row-fluid">
+		
+			<div class="span12">
+			
+			
+				<div class="tabbable">
+				
+				  <ul class="nav nav-tabs">
+				    <li class="active"><a href="#tab1" data-toggle="tab">Punkte</a></li>
+				    <li><a href="#tab2" data-toggle="tab">Pfade</a></li>
+				  </ul>
+				  
+				  <div class="tab-content">
+				  
+				    <div class="tab-pane active" id="tab1">				      
+				    	<table class="table table-striped" id="allPoints">
+					 		<tr id="pointHeaderRow">
+								<th align="center" width="60">@Messages("admin.paths.thid")(lang)</th>					
+								<th align="left">@Messages("admin.points.x")(lang)</th>		
+								<th align="left">@Messages("admin.points.y")(lang)</th>
+								<th>Aktion</th>
+							</tr>			 		
+					 	</table>
+					 	<input id="submitSavePointsWS" type="submit" class="btn" value="Punkte speichern" />				    
+				    </div>
+				    
+				    <div class="tab-pane" id="tab2">				      
+				      	<table class="table table-striped" id="allPaths">			 		
+					 		<tr id="pathHeaderRow">
+								<th align="center" width="60">ID</th>					
+								<th align="left">Startpunkt</th>		
+								<th align="left">Endpunkt</th>
+								<th>Aktion</th>
+							</tr>							
+					 	</table>
+					 	<input id="submitSavePathsWS" type="submit" class="btn" value="Pfade speichern" />				      
+				    </div>
+				    
+				  </div>
+				  
+				</div>
+		 	
+		 	</div>
+	 	</div>
+	 	
+	 	
+	 	
+	 	
+	}   
+}
+
+
+
+

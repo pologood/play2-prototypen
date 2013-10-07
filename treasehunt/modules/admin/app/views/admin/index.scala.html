@@ -1,0 +1,16 @@
+@(lang: Lang)
+
+@import helper._
+@import play.api.i18n._
+
+@views.html.common.main(Messages("admin.title"),"admin"){	
+	
+	@layout(lang)(null)(null)((Messages("admin.title")(lang) + "-" + Messages("admin.index.title")(lang)))("index"){	
+		 
+	    <h1>@Messages("admin.index.h1")(lang)</h1>
+	    
+	    <p>Was kann man hier alles machen?</p>
+
+	}
+    
+}	

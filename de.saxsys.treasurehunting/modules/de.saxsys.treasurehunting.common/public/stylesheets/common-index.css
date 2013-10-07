@@ -1,0 +1,74 @@
+#div-start {
+	width: 350px;
+	padding: 10px;
+	padding-left: 60px;
+	padding-right: 60px;
+	margin: auto;
+	margin-top: 64px;
+	background-image: url("/assets/images/index/index-fg-bg.svg");
+	background-position: top;
+	background-repeat: repeat-x;
+}
+
+#div-start:hover{
+	box-shadow: 0 0 10px white;
+	transition: all .2s linear;
+	
+}
+
+#index-heading {
+	height: 64px;
+	margin-top: 0px;
+	margin-bottom: 30px;
+	padding-top: 5pt;
+	padding-left: 0px;
+	vertical-align:middle;
+	
+}
+
+#p-heading{	
+	position:relative; 
+	padding-top:7px;
+}
+
+#img-index-heading {
+	margin-top: 0px;
+	margin-right: 10px;
+}
+
+#lang-chooser{
+	
+	padding-top:80px;
+}
+
+/* Login Form */
+
+#form-username {
+	margin: 0 0 0 0;
+}
+
+#div-username {
+	width: 350px;
+	height: 40px;
+	margin-top: 10px;
+}
+
+#lbl-username {
+	display: inline-block;
+	width: 100px;
+	height: 30px;
+	vertical-align: middle;
+}
+
+#div-input-username {
+	display: inline-block;
+	height: 30px;
+}
+
+#div-username-submit {
+	margin-top: 15px;
+	margin-bottom: 0px;
+}
+
+
+

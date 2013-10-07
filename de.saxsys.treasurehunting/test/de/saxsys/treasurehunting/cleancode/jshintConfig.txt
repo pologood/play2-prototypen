@@ -1,0 +1,11 @@
+{
+  "newcap": true,
+  "noempty": true,
+  "undef": true,
+  "unused": true,
+  "trailing": true,
+  "maxparams": 7,
+  "maxstatements": 150,
+  "maxlen": 80,
+  "nomen": true
+}

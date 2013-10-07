@@ -1,0 +1,13 @@
+@(message: String)
+
+@import play.api.i18n._
+
+@title = {
+	"Welcome to Play 2.1"	
+}
+
+@main(Lang.apply("de"))(title) {
+    
+    @play20.welcome(message, style = "Java")
+    
+}

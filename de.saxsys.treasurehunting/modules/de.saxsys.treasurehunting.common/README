@@ -1,0 +1,5 @@
+### Build Eclipse Project Files with Sources ###
+
+cd treasurehunting
+play
+[treasurehunting] $ eclipse with-source=true skip-parents=false 

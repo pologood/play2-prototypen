@@ -1,0 +1,56 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+################ play-authenticate ##################
+
+GET     /                           controllers.common.Application.index
+
+GET     /assets/javascript/routes.js    controllers.common.Application.jsRoutes
+
+GET     /profile                    controllers.common.Application.profile
+GET		/profile/save				controllers.common.Application.saveProfile
+
+GET     /login                      controllers.common.Application.login
+POST    /login                      controllers.common.Application.doLogin
+
+GET     /logout                     com.feth.play.module.pa.controllers.Authenticate.logout
+GET     /authenticate/:provider     com.feth.play.module.pa.controllers.Authenticate.authenticate(provider: String)
+
+GET     /signup                     controllers.common.Application.signup
+POST    /signup                     controllers.common.Application.doSignup
+
+GET     /accounts/unverified        controllers.common.Signup.unverified
+GET     /authenticate/:provider/denied     controllers.common.Signup.oAuthDenied(provider: String)
+
+GET     /accounts/verify/:token     controllers.common.Signup.verify(token: String)
+GET     /accounts/exists            controllers.common.Signup.exists
+
+GET     /accounts/password/reset/:token     controllers.common.Signup.resetPassword(token: String)
+POST    /accounts/password/reset            controllers.common.Signup.doResetPassword
+
+GET    /accounts/password/change    controllers.common.Account.changePassword
+POST   /accounts/password/change    controllers.common.Account.doChangePassword
+
+GET     /accounts/verify            controllers.common.Account.verifyEmail
+
+GET     /accounts/add               controllers.common.Account.link
+
+GET     /accounts/link              controllers.common.Account.askLink
+POST    /accounts/link              controllers.common.Account.doLink
+
+GET     /accounts/merge             controllers.common.Account.askMerge
+POST    /accounts/merge             controllers.common.Account.doMerge
+
+GET     /login/password/forgot     controllers.common.Signup.forgotPassword(email: String ?= "")
+POST    /login/password/forgot     controllers.common.Signup.doForgotPassword
+
+
+# secured AJAX Request
+GET		/secureJsonRedirect			controllers.common.Application.secureJsonRedirect
+
+
+####### Map static resources from the /public folder to the /assets URL path ######
+GET     /assets/*file              controllers.common.Assets.at(path="/public", file)
+
+

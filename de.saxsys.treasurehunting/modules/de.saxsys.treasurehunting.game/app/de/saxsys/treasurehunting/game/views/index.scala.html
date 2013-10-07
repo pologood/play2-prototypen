@@ -1,0 +1,82 @@
+@(spConfForm: Form[de.saxsys.treasurehunting.game.controllers.GameController.SingleplayerGameConfiguration])
+
+@import helper._
+@implicitFieldConstructor = @{ FieldConstructor(de.saxsys.treasurehunting.common.views.html.bootstrap.horizontalFieldConstructor.f) }
+
+@import play.api.i18n._
+@import de.saxsys.treasurehunting._
+@import de.saxsys.treasurehunting.common.views.html._
+
+@defining(common.controllers.CommonController.getLang()) { lang =>
+	
+	@main(Messages("game.index.title")(lang), "game") { 
+		@* header *@
+		<link rel="stylesheet" type="text/css" href="@game.controllers.routes.Assets.at("stylesheets/game/index.css")" />	
+		<link rel="stylesheet" type="text/css" href="@game.controllers.routes.Assets.at("stylesheets/game/singleplayer/sp-conf.css")" />
+		<script type="text/javascript" src="@game.controllers.routes.Assets.at("javascripts/game/game.js")" 
+			type="text/javascript"></script>
+	} {
+		@* content *@
+		<div class="row-fluid">
+			<div id="div-welcome-container" class="span12">
+			  <div id ="sp-configuration"class="hero-unit">
+	            <h1>@Messages("game.index.welcome.heading")(lang)</h1>
+	            <div id="logoPlaceholder">
+	            	<img id = "theChest" src="@game.controllers.routes.Assets.at("images/logo/theChest.svg")" />
+	            </div>
+	            <h2>@Messages("game.index.welcome.text")(lang)</h2>
+	            <p>@Messages("game.index.welcome.paragraph1")(lang)</p>
+	            <p>@Messages("game.index.welcome.paragraph2")(lang)</p>
+	            <h3>@Messages("game.index.welcome.greetings")(lang)</h3>
+	          </div>
+			</div>
+		</div>
+		
+		<div class="row-fluid">
+		  <div id="div-sp-conf" class="span6 well">
+		   
+		  	<span><h4>@Messages("game.index.sp.conf.heading")(lang)</h4>
+		  			<div id = picholder">
+	            		<img id="div-avatar" src="@game.controllers.routes.Assets.at("images/game/singleplayer/conf.svg")" />
+	            	</div>
+	         </span>
+		  		           
+		  	@helper.form(game.controllers.routes.GameController.startSPGame, args = 'method -> "post", 'id -> "form-singleplayer-conf") {
+						
+						<!--  #tf-gameName -->
+						@helper.inputText(spConfForm("gameName"),
+				      	   	'_label -> Messages("game.index.sp.conf.gameName.label")(lang), 
+				      	   	'placeholder -> Messages("game.index.sp.conf.gameName.label.placeholder")(lang),
+				      	   	'class -> "input-block-level")						
+						
+						<!--  #cb-counterColor  -->						
+						@defining(game.controllers.GameController.SingleplayerGameConfiguration.getCounterColors()) { colors: Map[Integer,String] =>
+							@helper.select(spConfForm("counterColor"), 
+								options = colors.map{case(k,v) => ("0x%x".format(k) -> v)} toList, 
+				      	   		'_label -> Messages("game.index.sp.conf.counterColor.label")(lang),
+				      	   		'class -> "input-block-level")
+						}
+						
+						<!--  #cb-playground  -->
+						@defining(game.services.PlaygroundService.getAllPlaygroundNames()) { playgroundNames: List[String] =>
+							@helper.select(spConfForm("playgroundName"), 
+								options = playgroundNames.map(s => s -> s),
+				      	   		'_label -> Messages("game.index.sp.conf.playgroundName.label")(lang),
+				      	   		'class -> "input-block-level")
+						}
+						
+						<!--  #div-vGameModes  -->
+						<!--  TODO  -->						
+						
+						<!--  #btn-startSPGame  -->
+						<div id="div-sp-conf-submit" class="form-actions">
+				           <button id="btn-startSPGame" type="submit" class="btn btn-large btn-block btn-inverse pull-left">
+				           		@Messages("game.index.sp.conf.submit")(lang)
+				           </button>
+				        </div>				        
+					}
+		  </div>
+		</div>
+
+	}
+}
